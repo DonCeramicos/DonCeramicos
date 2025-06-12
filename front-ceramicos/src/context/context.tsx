@@ -1,6 +1,6 @@
 'use client'
-
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
+import { getProducts } from "@/helpers/index";
 
 interface ICeramicos {
     name: string;
@@ -27,6 +27,17 @@ interface ContextProviderProps {
 export const Context = ({ children }: ContextProviderProps) => {
     const [ceramicos, setCeramicos] = useState<ICeramicos[]>([]);
 
+useEffect(() => {
+  const fetchData = async () => {
+    const data = await getProducts();
+    setCeramicos(data); 
+  };
+  fetchData();
+}, []);
+
+
+
+
     const value = { ceramicos, setCeramicos };
 
     return (
@@ -34,4 +45,4 @@ export const Context = ({ children }: ContextProviderProps) => {
             {children}
         </ContextApp.Provider>
     );
-};
+}
