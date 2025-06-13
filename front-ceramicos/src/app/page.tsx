@@ -1,9 +1,10 @@
-import { Contact } from "@/components/contact";
+'use client'
+import { ProductList } from "@/components/ProductList";
 export default function Home() {
 
   return (
           <>
-            <Contact />
+           <ProductList/>
             
           </>
   );

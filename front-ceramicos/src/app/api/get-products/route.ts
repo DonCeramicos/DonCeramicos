@@ -12,14 +12,9 @@ export async function GET(){
         const products = snapshot.docs.map((doc)=>({
             id:doc.id,
             ...doc.data(),
-        }))
-        console.log(products);
-        
+        }))        
         return NextResponse.json(products,{status:200})
-
-    }catch(error){
-        console.log("error en la peticion",error);
-        
+    }catch(error){        
         return NextResponse.json({error:"error al obtener los productos"}, {status:500})
     }
 }
