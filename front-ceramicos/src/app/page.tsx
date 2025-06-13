@@ -1,11 +1,12 @@
-'use client'
-import { ProductList } from "@/components/ProductList";
+import {HomeComponent} from "../components/home/index";
+
 export default function Home() {
 
   return (
           <>
-           <ProductList/>
+           <HomeComponent/>
             
           </>
   );
 }
+ 
