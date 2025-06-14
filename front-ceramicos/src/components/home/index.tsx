@@ -1,10 +1,10 @@
 import { Navbar } from "../navbar";
 import WhatsAppFloatingButton from "../whatsApp-Button";
-import { Footer } from "../footer";
+
 
 export const HomeComponent = () => {
   return (
-    <div id="home" className="relative h-screen overflow-hidden">
+    <div id="home" className=" h-[100vh]">
       {/* Fondo dividido en 4 cuadrantes */}
 
       <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 z-0">
@@ -29,7 +29,6 @@ export const HomeComponent = () => {
 
       {/* Contenido por encima */}
       <div className="relative z-10 h-full">
-        <Navbar />
 
         <h1 style={{color:"#a93737"}} className="font-poiret-one text-6xl mt-45 w-[24rem] text-left mx-8 font-bold md:text-[8.8rem] md:w-[46rem] md:mt-30 md:mx-1">
           DON CERAMICOS
@@ -41,7 +40,6 @@ export const HomeComponent = () => {
 
         <WhatsAppFloatingButton />
 
-        <Footer />
       </div>
     </div>
   );

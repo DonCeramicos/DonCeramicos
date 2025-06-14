@@ -1,3 +1,4 @@
+'use client'
 import { Product_Card } from '../Product_Card'
 import { useContext } from 'react'
 import { ContextApp } from '../../context/context'
@@ -8,7 +9,7 @@ export const ProductList = () => {
     console.log(ceramicos);
 
     return (
-        <div className='bg-amber-950 flex flex-wrap'>
+        <div id='catalogo' className='bg-amber-950 flex flex-wrap h-[100vh]'>
             <h1>ProductList</h1>
             {ceramicos.map((ceramico: ICeramicos) => (
                 <Product_Card ceramico={ceramico} key={ceramico.id} />

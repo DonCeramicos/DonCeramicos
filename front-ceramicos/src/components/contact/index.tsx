@@ -120,7 +120,7 @@ export const Contact = () => {
   };
 
   return (
-    <div>
+    <div id="contacto" className="flex flex-col items-center justify-center h-[100vh]">
       <h1>CONTACTANOS</h1>
       <form
         onSubmit={handleSubmit}
