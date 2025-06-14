@@ -7,7 +7,7 @@ export const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="flex justify-between items-center px-1 py-4 relative z-50">
+    <nav className="  bg-amber-900 flex justify-between items-center px-1 py-4 relative z-50">
       {/* Logo */}
       <a href="#home">
         <Image src="/logo-bg.png" alt="logo" width={130} height={100} />
@@ -75,6 +75,7 @@ export const Navbar = () => {
           </a>
         </div>
       )}
+      
     </nav>
   );
 };
