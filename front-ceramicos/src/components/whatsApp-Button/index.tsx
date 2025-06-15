@@ -6,7 +6,7 @@ export default function WhatsAppFloatingButton() {
       href="https://wa.me/+5491128254000?text=Hola!%20Quiero%20hacer%20una%20consulta"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-25 right-6 z-50 animate-pulse"
+      className="fixed bottom-10 md:bottom-25 right-6 z-50 animate-pulse"
     >
       <Image
         src="/whatsapp-button.png"

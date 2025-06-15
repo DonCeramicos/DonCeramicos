@@ -3,13 +3,17 @@ import { Footer } from "../components/footer";
 import Contact from "@/components/contact";
 import { ProductList } from "@/components/ProductList";
 import { Navbar } from "@/components/navbar";
+import { Offers } from "@/components/offers";
+import WhatsAppFloatingButton from "../components/whatsApp-Button";
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <WhatsAppFloatingButton />
       <HomeComponent />
       <ProductList />
+      <Offers />
       <Contact />
       <Footer />
     </>

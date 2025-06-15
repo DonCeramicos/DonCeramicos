@@ -9,7 +9,7 @@ export const ProductList = () => {
     console.log(ceramicos);
 
     return (
-        <div id='catalogo' className='bg-amber-950 flex flex-wrap h-[100vh]'>
+        <div id='catalogo' className='bg-custom flex flex-wrap h-[97vh] md:h-[91vh] scroll-mt-16'>
             <h1>ProductList</h1>
             {ceramicos.map((ceramico: ICeramicos) => (
                 <Product_Card ceramico={ceramico} key={ceramico.id} />

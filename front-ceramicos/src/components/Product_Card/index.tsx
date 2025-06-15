@@ -14,3 +14,4 @@ export const Product_Card = ({ceramico} : {ceramico: ICeramicos}) => {
         </div>
     )
 }
+//agregar una condicion de que si el objeto tiene la propiedad oferta en true aparezca un logo de oeferta

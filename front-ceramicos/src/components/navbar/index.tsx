@@ -7,14 +7,17 @@ export const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-amber-900 flex justify-between items-center px-1 py-4 sticky top-0 z-100">
+    <nav style={{ backgroundColor: "rgb(213, 181, 170)" }} className="flex justify-between items-center px-1  sticky top-0 z-100">
       {/* Logo */}
       <a href="#home">
         <Image src="/logo-bg.png" alt="logo" width={130} height={100} />
       </a>
 
       {/* Listado para pc*/}
-      <ul className="hidden md:flex gap-6 font-phudu tracking-wider text-[14px] bg-amber-900/90 p-2 rounded text-amber-50">
+      <ul style={{ color: "#a93737" }} className="hidden md:flex gap-6 font-phudu tracking-wider text-[14px] p-2 rounded">
+       <a href="#home" className="hover:scale-105 transition-all duration-300">
+          INICIO
+        </a>
         <a href="#catalogo" className="hover:scale-105 transition-all duration-300">
           CATALOGO
         </a>
@@ -64,6 +67,9 @@ export const Navbar = () => {
           </button>
 
           {/* Links mobile */}
+          <a href="#home" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+            INICIO
+          </a>
           <a href="#catalogo" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
             CATALOGO
           </a>
