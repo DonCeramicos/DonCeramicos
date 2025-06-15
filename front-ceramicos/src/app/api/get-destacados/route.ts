@@ -8,7 +8,7 @@ import { NextResponse } from "next/server"
 
 export async function GET(){
     try{
-        const snapshot = await getDocs(collection(db,"ceramicos"))
+        const snapshot = await getDocs(collection(db,"destacadas"))
         const products = snapshot.docs.map((doc)=>({
             id:doc.id,
             ...doc.data(),
@@ -19,4 +19,3 @@ export async function GET(){
     }
 }
 //esta funcion trae los datos de la bdd, y desestructura cada documento para generar un objeto que contenga el id junto a las demas propiedades ya que firebase no es relacional, por ende el id esta en el documento pero fuera del objeto que tiene las propiedades. 
-

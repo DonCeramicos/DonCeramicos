@@ -15,7 +15,7 @@ export const Offers = () => {
 
             {
                 ofertas.map((ceramico: ICeramicos) => (
-                    <Product_Card ceramico={ceramico} key={ceramico.id} />
+<Product_Card ceramico={ceramico} key={ceramico.id} isInOffersSection />
                 ))
             }
 
