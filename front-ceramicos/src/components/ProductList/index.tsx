@@ -13,12 +13,17 @@ export const ProductList = () => {
       id="catalogo"
       className="flex flex-col flex-wrap justify-center items-center h-[97vh] md:h-[91vh] scroll-mt-16 bg-custom"
     >
-      <h1 className="font-phudu font-light w-[24rem] text-left mx-8  md:mx-1 text-amber-50 text-[1.5rem] border">Nuestos Productos</h1>
-      <div className="relative w-[90%] h-[90%] overflow-y-auto p-1">
+      <h1
+        style={{ color: "#bababa" }}
+        className="font-rancho font-light  text-left mx-8  md:mx-1 text-[2.4rem]  translate-x-[-35.8rem] top-[-2rem]"
+      >
+        Nuestros Productos
+      </h1>
+      <div className="relative w-[90%] h-[90%] p-1">
         {/* Fondo dividido en 4 cuadrantes */}
         <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 z-0  gap-1">
           <div
-           className="bg-cover bg-no-repeat bg-center rounded-tl-lg "
+            className="bg-cover bg-no-repeat bg-center rounded-tl-lg "
             style={{ backgroundImage: "url(/background-product2.jpg)" }}
           ></div>
           <div
@@ -26,17 +31,20 @@ export const ProductList = () => {
             style={{ backgroundImage: "url(/background-product2.jpg)" }}
           ></div>
           <div
-           className="bg-cover bg-no-repeat bg-center rounded-bl-lg "
+            className="bg-cover bg-no-repeat bg-center rounded-bl-lg "
             style={{ backgroundImage: "url(/background-product2.jpg)" }}
           ></div>
           <div
- className="bg-cover bg-no-repeat bg-center rounded-br-lg "
+            className="bg-cover bg-no-repeat bg-center rounded-br-lg "
             style={{ backgroundImage: "url(/background-product2.jpg)" }}
           ></div>
         </div>
-        {ceramicos.map((ceramico: ICeramicos) => (
-          <Product_Card ceramico={ceramico} key={ceramico.id} />
-        ))}
+<div className="grid gap-2 overflow-y-auto h-full z-10 relative pr-2">
+  {ceramicos.map((ceramico: ICeramicos) => (
+    <Product_Card ceramico={ceramico} key={ceramico.id} />
+  ))}
+</div>
+
       </div>
     </div>
   );

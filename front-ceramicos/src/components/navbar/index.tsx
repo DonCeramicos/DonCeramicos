@@ -14,18 +14,18 @@ export const Navbar = () => {
       </a>
 
       {/* Listado para pc*/}
-      <ul style={{ color: "#bababa" }} className="hidden md:flex gap-6 font-phudu tracking-wider text-[14px] p-2 rounded">
+      <ul style={{ color: "#bababa" }} className="hidden md:flex gap-6 font-rancho tracking-wider text-[20px] p-2 rounded">
        <a href="#home" className="hover:scale-105 transition-all duration-300">
-          INICIO
+          Inicio
         </a>
         <a href="#catalogo" className="hover:scale-105 transition-all duration-300">
-          CATALOGO
+          Catalogo
         </a>
         <a href="#ofertas" className="hover:scale-105 transition-all duration-300">
-          OFERTAS
+          Ofertas
         </a>
         <a href="#contacto" className="hover:scale-105 transition-all duration-300">
-          CONTACTO
+          Contacto
         </a>
       </ul>
 

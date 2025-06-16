@@ -31,7 +31,7 @@ export const HomeComponent = () => {
             DON CERAMICOS
           </h1>
 
-        <div className="personal-bounce bn632-hover bn19 flex justify-center items-center mx-auto md:items-center md:ml-6 md:py-2 md:px-6 text-[1rem] md:text-2xl font-phudu hover:cursor-pointer md:justify-center">
+        <div className="personal-bounce bn632-hover bn19 flex justify-center items-center mx-auto md:items-center md:ml-6 md:py-2 md:px-6 text-[1rem] md:text-2xl font-poiret-one font-extrabold hover:cursor-pointer md:justify-center">
           <a href="#contacto">PEDI TU PRESUPUESTO</a>
         </div>
       </div>
