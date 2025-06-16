@@ -111,6 +111,45 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
+/*ANIMACION DE COLOR PARA EL BOTON VER*/
+.ver-hover {
+  width: 80px;
+  cursor: pointer;
+  height: 25px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  color: #ffffff;
+}
+
+.ver-hover:hover {
+  background-position: 100% 0;
+  transform: scale(1.1);
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.ver-hover:focus {
+  outline: none;
+}
+
+.ver-hover.bn19 {
+  background-image: linear-gradient(
+    to right,
+    #9a813e,
+    #972502,
+    #b65170,
+    #e86c33
+  );
+  box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
+    transition: all 0.3s ease-in-out;
+}
+
 /*ANIMACION DE SCROLL*/
 
 .scrollbar::-webkit-scrollbar-track {
@@ -131,7 +170,61 @@ body {
 
 
 
-
 .bg-data-card {
   background-color: #2d2d2db5;
+}
+
+/*ANIMACION DE BOTON ENVIAR*/
+
+.btn41-43 {
+  padding: 10px 25px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  font-family: rancho;
+  font-size: 20px;
+  background-color: rgb(211, 122, 5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-42 {
+  border: 1px solid rgb(0, 0, 0);
+  z-index: 1;
+  color: rgb(0, 0, 0);
+}
+
+.btn-42:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: rgb(93, 82, 82);
+  transition: all 0.3s ease;
+}
+
+.btn-42:hover {
+  color: rgb(0, 0, 0);
+}
+
+.btn-42:hover:after {
+  top: 0;
+  height: 100%;
+}
+
+.btn-42:active {
+  top: 2px;
 }

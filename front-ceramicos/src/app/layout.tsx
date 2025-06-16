@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Philosopher, Phudu, Poiret_One, Rancho } from "next/font/google";
 import { Context } from "@/context/context";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -52,6 +53,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${porietOne.variable}  ${phudu.variable} ${rancho.variable} ${philosopher.variable} antialiased`}
       >
         {children}
+        <Toaster
+          position="top-center"
+          style={{ zIndex: 999, fontFamily: "rancho" }}
+         />
       </body>
       </Context>
     </html>

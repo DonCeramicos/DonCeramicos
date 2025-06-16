@@ -32,7 +32,7 @@ export const Product_Card = ({ ceramico, isInOffersSection = false }: ProductCar
         <p className="font-phudu">DIMENSIONES: {ceramico.dimensiones}</p>
         <p className="font-phudu ">CANTIDAD POR CAJA: {ceramico.cantidad}</p>
       </div>
-      <button className="absolute bottom-1 border-amber-50 rounded text-[16px] hover:scale-110 transition-all duration-300 hover:cursor-pointer hover:text-amber-50  font-phudu">ver</button>
+      <button className="absolute bottom-1 text-[16px] font-rancho tracking-widest ver-hover bn19">ver</button>
     </div>
   );
 };

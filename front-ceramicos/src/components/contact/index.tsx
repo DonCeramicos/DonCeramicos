@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface IForm {
   name: string;
@@ -113,10 +114,29 @@ export const Contact = () => {
 
       const data = await response.json();
       console.log(data);
-      alert("Correo enviado correctamente ✅");
+      toast.success("Correo enviado con exito",{
+        style: {
+          background: "#e8e8e8",
+          color: "#000000",
+          fontSize: "1.2rem",
+          textAlign: "center"
+        }
+      });
+      setForm({
+        name: "",
+        surname: "",
+        phone: "",
+        email: "",
+        message: "",
+      })
     } catch (error) {
       console.error(error);
-      alert("Hubo un error al enviar el correo ❌");
+      toast.error("Error al enviar el correo",{
+        style: {
+          background: "#e8e8e8",
+          color: "#000000",
+        }
+      });
     }
   };
 
@@ -125,136 +145,121 @@ export const Contact = () => {
       id="contacto"
       className="flex flex-col h-[97vh] md:h-[91vh] scroll-mt-16 bg-custom"
     >
-      <h1 className="font-poiret-one text-5xl w-[24rem] text-center mx-8 font-bold md:text-[3rem] md:w-[46rem] my-6">
-        CONTACTANOS
+      <h1
+        style={{ color: "#bababa" }}
+        className="font-rancho font-light text-left md:mx-18 text-[2.4rem]"
+      >
+        Contactanos
       </h1>
 
-      <div className="flex justify-evenly items-center border">
-
+      <div className="flex justify-between items-center border px-19">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col bg-slate-400 h-[30rem] w-[30rem] gap-2 p-4  border"
+          className="flex flex-col bg-[url('/background-app.jpg')] bg-cover rounded bg-center h-[35rem] w-[30rem] p-4 font-poiret-one font-extrabold gap-2"
         >
           <label htmlFor="name">NOMBRE</label>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          {touched.name && errors.name && (
-            <p className="text-red-500">{errors.name}</p>
-          )}
+          <div className="flex gap-1">
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className="p-1 bg-white rounded w-[15rem] mb-1"
+            />
+            {touched.name && errors.name && (
+              <p className="text-red-500">{errors.name}</p>
+            )}
+          </div>
 
           <label htmlFor="surname">APELLIDO</label>
-          <input
-            type="text"
-            name="surname"
-            value={form.surname}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          {touched.surname && errors.surname && (
-            <p className="text-red-500">{errors.surname}</p>
-          )}
+          <div className="flex gap-1">
+            <input
+              type="text"
+              name="surname"
+              value={form.surname}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className="p-1 bg-white rounded w-[15rem] mb-1"
+            />
+            {touched.surname && errors.surname && (
+              <p className="text-red-500">{errors.surname}</p>
+            )}
+          </div>
 
           <label htmlFor="phone">TELÉFONO</label>
-          <input
-            type="text"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          {touched.phone && errors.phone && (
-            <p className="text-red-500">{errors.phone}</p>
-          )}
+          <div className="flex gap-1">
+            <input
+              type="text"
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className="p-1 bg-white rounded w-[15rem] mb-1"
+            />
+            {touched.phone && errors.phone && (
+              <p className="text-red-500">{errors.phone}</p>
+            )}
+          </div>
 
           <label htmlFor="email">EMAIL</label>
-          <input
-            type="text"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          {touched.email && errors.email && (
-            <p className="text-red-500">{errors.email}</p>
-          )}
-
-          <label htmlFor="message">MENSAJE</label>
-          <textarea
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            rows={4}
-          />
-          {touched.message && errors.message && (
-            <p className="text-red-500">{errors.message}</p>
-          )}
-
+          <div className="flex gap-1">
+            <input
+              type="text"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className="p-1 bg-white rounded w-[15rem] mb-1"
+            />
+            {touched.email && errors.email && (
+              <p className="text-red-500">{errors.email}</p>
+            )}
+          </div>
+          <div className="flex flex-col gap-1 mt-6">
+            <div className="flex justify-between">
+              <label htmlFor="message">MENSAJE</label>
+              {touched.message && errors.message && (
+                <p className="text-red-500">{errors.message}</p>
+              )}
+            </div>
+            <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              rows={4}
+              cols={30}
+              className="p-1 bg-white rounded"
+            />
+          </div>
           <button
             type="submit"
-            className="bg-orange-500 px-4 py-2 rounded text-white"
+            className="btn41-43 btn-42 translate-x-30 text-[16px] font-rancho tracking-widest"
           >
-            ENVIAR
+            Enviar
           </button>
         </form>
 
-        {/* REDES */}
-        <div className="border flex flex-col gap-2 w-full max-w-[240px] text-[14px] items-center">
-          <h3 className="text-center text-2xl">REDES</h3>
-          <div className="flex flex-col gap-4">
-            <a
-              href="https://www.facebook.com/p/Don-cer%C3%A1micos-100068413961241"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/facebook-color.png"
-                alt="facebook"
-                className="h-15 w-15 hover:scale-110 transition"
-              />
-            </a>
-            <a
-              href="https://www.instagram.com/reel/DCCDuEYOjtj/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/instagram-color.png"
-                alt="instagram"
-                className="h-15 w-15 hover:scale-110 transition"
-              />
-            </a>
-            <a
-              href="https://wa.me/+5491128254000?text=Hola!%20Quiero%20hacer%20una%20consulta"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/whatsapp-button.png"
-                alt="whatsapp"
-                className="h-15 w-15 hover:scale-110 transition"
-              />
-            </a>
-          </div>
-        </div>
-
         {/* DIRECCION */}
-        <div className="border flex flex-col gap-2 text-[14px] items-center md:items-center text-center md:text-left md:h-[30rem]">
-          <h3 className="text-center text-4xl w-full">ENCONTRANOS EN</h3>
+        <div className="border flex flex-col gap-2 text-[14px] items-center justify-center  md:h-[30rem]">
+          <h3
+            style={{ color: "#bababa" }}
+            className="text-center text-4xl w-full font-rancho "
+          >
+            Encontranos en
+          </h3>
           <a
             href="https://maps.app.goo.gl/YuBqy4cyh26zL5bJA"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline "
           >
-            <h4 className="text-center  w-full">J. Hernandez 4490</h4>
-            <h4 className="text-center  w-full">
-              frente a la Estación Claypole, PBA
+            <h4 style={{ color: "#bababa" }} className="text-center w-full">
+              J. Hernandez 4490 esq. S. Liniers Claypole PBA
+            </h4>
+            <h4 style={{ color: "#bababa" }} className="text-center w-full">
+              a 100 mts a la Estación Claypole
             </h4>
           </a>
 
@@ -268,6 +273,50 @@ export const Contact = () => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
+          </div>
+          {/* REDES */}
+          <div className="border flex justify-center gap-6 w-full max-w-[300px] text-[14px] ">
+            <h3
+              style={{ color: "#bababa" }}
+              className="text-center text-2xl font-rancho"
+            >
+              Redes
+            </h3>
+            <div className="flex justify-center items-center gap-5 w-full ">
+              <a
+                href="https://www.facebook.com/p/Don-cer%C3%A1micos-100068413961241"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/facebook-color.png"
+                  alt="facebook"
+                  className="h-10 w-10 hover:scale-110 transition"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/reel/DCCDuEYOjtj/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/instagram-color.png"
+                  alt="instagram"
+                  className="h-10 w-10 hover:scale-110 transition"
+                />
+              </a>
+              <a
+                href="https://wa.me/+5491128254000?text=Hola!%20Quiero%20hacer%20una%20consulta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/whatsapp-button.png"
+                  alt="whatsapp"
+                  className="h-10 w-10 hover:scale-110 transition"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
