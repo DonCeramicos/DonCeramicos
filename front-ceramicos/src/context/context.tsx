@@ -6,9 +6,10 @@ export interface ICeramicos {
   id: string;
   nombre: string;
   valor: number;
-  imagen: string;
+  imagen: string[];
   dimensiones: string;
   oferta?: boolean;
+  cantidad?: number;
 }
 
 export interface Idestacadas {
