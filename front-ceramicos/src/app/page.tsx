@@ -5,7 +5,7 @@ import { ProductList } from "@/components/ProductList";
 import { Navbar } from "@/components/navbar";
 import { Offers } from "@/components/offers";
 import WhatsAppFloatingButton from "../components/whatsApp-Button";
-
+import { Carousel } from "@/components/carousel";
 export default function Home() {
   return (
     <>
@@ -16,6 +16,7 @@ export default function Home() {
       <Offers />
       <Contact />
       <Footer />
+      <Carousel />
     </>
   );
 }

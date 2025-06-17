@@ -114,13 +114,13 @@ export const Contact = () => {
 
       const data = await response.json();
       console.log(data);
-      toast.success("Correo enviado con exito",{
+      toast.success("Correo enviado con exito", {
         style: {
           background: "#e8e8e8",
           color: "#000000",
           fontSize: "1.2rem",
-          textAlign: "center"
-        }
+          textAlign: "center",
+        },
       });
       setForm({
         name: "",
@@ -128,14 +128,14 @@ export const Contact = () => {
         phone: "",
         email: "",
         message: "",
-      })
+      });
     } catch (error) {
       console.error(error);
-      toast.error("Error al enviar el correo",{
+      toast.error("Error al enviar el correo", {
         style: {
           background: "#e8e8e8",
           color: "#000000",
-        }
+        },
       });
     }
   };
@@ -152,7 +152,7 @@ export const Contact = () => {
         Contactanos
       </h1>
 
-      <div className="flex justify-between items-center border px-19">
+      <div className="flex justify-between items-start px-19">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col bg-[url('/background-app.jpg')] bg-cover rounded bg-center h-[35rem] w-[30rem] p-4 font-poiret-one font-extrabold gap-2"
@@ -240,9 +240,8 @@ export const Contact = () => {
             Enviar
           </button>
         </form>
-
         {/* DIRECCION */}
-        <div className="border flex flex-col gap-2 text-[14px] items-center justify-center  md:h-[30rem]">
+        <div className=" font-poiret-one font-extrabold flex flex-col gap-2 text-[14px] items-center justify-center  md:h-[30rem]">
           <h3
             style={{ color: "#bababa" }}
             className="text-center text-4xl w-full font-rancho "
@@ -275,14 +274,14 @@ export const Contact = () => {
             ></iframe>
           </div>
           {/* REDES */}
-          <div className="border flex justify-center gap-6 w-full max-w-[300px] text-[14px] ">
+          <div className="flex justify-center gap-6 w-full max-w-[300px] text-[14px] mt-2 ">
             <h3
               style={{ color: "#bababa" }}
               className="text-center text-2xl font-rancho"
             >
               Redes
             </h3>
-            <div className="flex justify-center items-center gap-5 w-full ">
+            <div className="flex justify-center items-center gap-4 w-full ">
               <a
                 href="https://www.facebook.com/p/Don-cer%C3%A1micos-100068413961241"
                 target="_blank"
@@ -317,6 +316,14 @@ export const Contact = () => {
                 />
               </a>
             </div>
+          </div>
+          <div
+            style={{ color: "#bababa" }}
+            className=" flex justify-center items-center gap-3 w-full max-w-[400px] text-[14px] "
+          >
+            <p>11-2345-6789</p>
+            <p className="text-center text-4xl">.</p>
+            <p>donceramicos.info@gmail.com</p>
           </div>
         </div>
       </div>

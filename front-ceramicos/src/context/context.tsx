@@ -17,9 +17,10 @@ export interface Idestacadas {
   id: string;
   nombre: string;
   valor: number;
-  imagen: string;
+  imagen: string[];
+  ambiente: string;
   dimensiones: string;
-  cantidadXcajas: number;
+  cantidad: number;
   oferta: number;
 }
 
