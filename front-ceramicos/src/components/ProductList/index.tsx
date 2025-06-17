@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { ContextApp, ICeramicos } from "../../context/context";
 import { Product_Card } from "../Product_Card";
+import { useRouter } from "next/navigation";
 
 export const ProductList = () => {
   const { ceramicos } = useContext(ContextApp);
@@ -21,6 +22,11 @@ export const ProductList = () => {
 
   // 🔸 Calcular el total de páginas
   const totalPages = Math.ceil(ceramicos.length / itemsPerPage);
+
+  const router = useRouter();
+  const handleDetail = async (id: string) => {
+    router.push(`/${id}`);
+  };
 
   return (
     <div
@@ -75,7 +81,7 @@ export const ProductList = () => {
         {/* Productos */}
         <div className="grid gap-2 overflow-y-auto h-[99%] z-10 relative pr-2">
           {currentItems.map((ceramico: ICeramicos) => (
-            <Product_Card ceramico={ceramico} key={ceramico.id} />
+            <Product_Card ceramico={ceramico} key={ceramico.id} onClick={()=>handleDetail(ceramico.id  )} />
           ))}
         </div>
       </div>

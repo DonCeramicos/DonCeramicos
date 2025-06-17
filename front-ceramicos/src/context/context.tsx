@@ -7,6 +7,7 @@ export interface ICeramicos {
   nombre: string;
   valor: number;
   imagen: string[];
+  ambiente: string;
   dimensiones: string;
   oferta?: boolean;
   cantidad?: number;

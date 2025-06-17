@@ -228,3 +228,30 @@ body {
 .btn-42:active {
   top: 2px;
 }
+
+.scroll-hidden {
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE 10+ */
+}
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none;              /* Chrome, Safari, Opera */
+}
+
+/*ANIMACION DE PRODUCT DETAIL*/
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.4s ease-in-out forwards;
+  }
+}
