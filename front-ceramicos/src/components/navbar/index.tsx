@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,18 +16,18 @@ export const Navbar = () => {
 
       {/* Listado para pc*/}
       <ul style={{ color: "#bababa" }} className="hidden md:flex gap-6 font-rancho tracking-wider text-[20px] p-2 rounded">
-       <a href="#home" className="hover:scale-105 transition-all duration-300">
+       <Link href="/#home" className="hover:scale-105 transition-all duration-300">
           Inicio
-        </a>
-        <a href="#catalogo" className="hover:scale-105 transition-all duration-300">
+        </Link>
+        <Link href="/#catalogo" className="hover:scale-105 transition-all duration-300">
           Catalogo
-        </a>
-        <a href="#ofertas" className="hover:scale-105 transition-all duration-300">
+        </Link>
+        <Link href="/#ofertas" className="hover:scale-105 transition-all duration-300">
           Ofertas
-        </a>
-        <a href="#contacto" className="hover:scale-105 transition-all duration-300">
+        </Link>
+        <Link href="/#contacto" className="hover:scale-105 transition-all duration-300">
           Contacto
-        </a>
+        </Link>
       </ul>
 
 {/* Botón hamburguesa - Mobile */}

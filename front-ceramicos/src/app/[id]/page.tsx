@@ -146,7 +146,8 @@ export default function ProductDetailSection({
                   ))}
                   </div>
                 </div>
-                <button className="bg-amber-50 hover:bg-amber-400 text-black font-bold py-2 px-4 rounded absolute bottom-60 hover:cursor-pointer hover:scale-110 transition duration-500">
+                <button className="bg-amber-50 hover:bg-amber-400 text-black font-bold py-2 px-4 rounded absolute bottom-60 hover:cursor-pointer hover:scale-110 transition duration-500"
+                onClick={() => router.push('/#contacto')}>
                     Pedi tu presupuesto
                 </button>
                 <WhatsAppFloatingButton />
