@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Philosopher, Phudu, Poiret_One, Rancho } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Philosopher,
+  Phudu,
+  Poiret_One,
+  Rancho,
+} from "next/font/google";
 import { Context } from "@/context/context";
 import { Toaster } from "sonner";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import "./globals.css";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,25 +31,25 @@ export const metadata: Metadata = {
 const phudu = Phudu({
   variable: "--font-phudu",
   subsets: ["latin"],
-})
+});
 
 const porietOne = Poiret_One({
   variable: "--font-poiret-one",
   subsets: ["latin"],
   weight: "400",
-})
+});
 
 const rancho = Rancho({
   variable: "--font-rancho",
   subsets: ["latin"],
   weight: "400",
-})
+});
 
 const philosopher = Philosopher({
   variable: "--font-philosopher",
   subsets: ["latin"],
   weight: "400",
-})
+});
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,15 +58,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Context>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${porietOne.variable}  ${phudu.variable} ${rancho.variable} ${philosopher.variable} antialiased`}
-      >
-        {children}
-        <Toaster
-          position="top-center"
-          style={{ zIndex: 999, fontFamily: "rancho" }}
-         />
-      </body>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${porietOne.variable}  ${phudu.variable} ${rancho.variable} ${philosopher.variable} antialiased`}
+        >
+          <Navbar />
+          {children}
+          <Toaster
+            position="top-center"
+            style={{ zIndex: 999, fontFamily: "rancho" }}
+          />
+          <Footer />
+        </body>
       </Context>
     </html>
   );

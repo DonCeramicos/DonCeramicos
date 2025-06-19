@@ -1,32 +1,39 @@
 "use client";
 import { useState, useEffect, useContext } from "react";
-import { ContextApp, ICeramicos } from "@/context/context";
+import { ContextApp, ICeramicos, Idestacadas } from "@/context/context";
 import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
 import WhatsAppFloatingButton from "@/components/whatsApp-Button";
+import { useParams } from "next/navigation";
 
-export default function ProductDetailSection({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function ProductDetailPage() {
+  const { id } = useParams();
+
   const [selectedImage, setSelectedImage] = useState<string>("");
-  const [itemDetail, setItemDetail] = useState<ICeramicos | undefined>();
-  const { ceramicos } = useContext(ContextApp);
+  const [itemDetail, setItemDetail] = useState<ICeramicos | Idestacadas>();
+  const { ceramicos, destacadas } = useContext(ContextApp);
   const router = useRouter();
 
   const handleImageClick = (img: string) => {
     setSelectedImage(img);
   };
 
-  useEffect(() => {
-    if (ceramicos.length > 0) {
-      const found = ceramicos.find((c) => c.id === params.id);
-      setItemDetail(found);
-    }
-  }, [ceramicos, params.id]);
+useEffect(() => {
+  let found;
+
+  if (ceramicos.length > 0) {
+    found = ceramicos.find((c) => c.id === id);
+  }
+
+  if (!found && destacadas.length > 0) {
+    found = destacadas.find((d) => d.id === id);
+  }
+
+  setItemDetail(found);
+}, [ceramicos, destacadas, id]);
+
 
   if (!itemDetail) {
     return <p className="text-white">Cargando detalle...</p>;
@@ -36,8 +43,7 @@ export default function ProductDetailSection({
     router.back();
   };
   return (
-    <div>
-      <Navbar />
+
       <div className="relative bg-custom flex flex-col text-white h-[75.6vh] p-4">
         <button
           className="absolute right-2 bg-amber-500 hover:bg-amber-600 text-white py-1 px-1 rounded w-20 hover:cursor-pointer"
@@ -156,7 +162,6 @@ export default function ProductDetailSection({
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+
   );
 }

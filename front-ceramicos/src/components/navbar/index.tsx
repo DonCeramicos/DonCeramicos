@@ -8,21 +8,21 @@ export const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav style={{ backgroundColor: "#000000" }} className="flex justify-between items-center px-1  sticky top-0 z-100">
+    <nav className="bg-custom-2 flex justify-evenly items-center px-1  sticky top-0 z-100">
       {/* Logo */}
       <a href="#home">
         <Image src="/logo-bg.png" alt="logo" width={130} height={100} />
       </a>
 
       {/* Listado para pc*/}
-      <ul style={{ color: "#bababa" }} className="hidden md:flex gap-6 font-rancho tracking-wider text-[20px] p-2 rounded">
+      <ul  className=" color-font-2 hidden md:flex gap-6 font-rancho tracking-wider text-[20px] p-2 rounded">
        <Link href="/#home" className="hover:scale-105 transition-all duration-300">
           Inicio
         </Link>
-        <Link href="/#catalogo" className="hover:scale-105 transition-all duration-300">
+        <Link href="/catalogo/#catalogo" className="hover:scale-105 transition-all duration-300">
           Catalogo
         </Link>
-        <Link href="/#ofertas" className="hover:scale-105 transition-all duration-300">
+        <Link href="/catalogo/#ofertas" className="hover:scale-105 transition-all duration-300">
           Ofertas
         </Link>
         <Link href="/#contacto" className="hover:scale-105 transition-all duration-300">

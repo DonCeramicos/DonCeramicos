@@ -4,7 +4,7 @@ import Image from "next/image";
 
 type ProductCardProps = {
   ceramico: ICeramicos;
-  isInOffersSection?: boolean; // ← nueva prop opcional
+  isInOffersSection?: boolean;
   onClick?: () => void;
 };
 
@@ -13,37 +13,42 @@ export const Product_Card = ({
   isInOffersSection = false,
   onClick,
 }: ProductCardProps) => {
-
   return (
     <div
-      className="relative h-[350px] w-[240.825px]  rounded p-1 bg-data-card border-amber-50 flex flex-col items-center "
+      className="relative h-[300px] w-[190px] rounded-lg p-2 bg-[#2b2b2bdb] flex flex-col items-center shadow-md hover:shadow-lg transition-shadow duration-300"
       key={ceramico.id}
     >
       {/* Badge de oferta */}
       {isInOffersSection && ceramico.oferta && (
-        <div className="absolute top-[-1] left-[-1] overflow-hidden w-[76px] h-[76px]">
-          <div className="bg-red-600 text-white text-[10px] font-bold rotate-[-45deg] w-[100px] text-center absolute top-3 left-[-30px] z-50 hover:scale-101 transition duration-300 ">
+        <div className="absolute top-[-1px] left-[-1px] overflow-hidden w-[76px] h-[76px]">
+          <div className="bg-red-600 text-white text-[10px] font-bold rotate-[-45deg] w-[100px] text-center absolute top-3 left-[-30px] z-50 hover:scale-101 transition duration-300">
             ¡OFERTA!
           </div>
         </div>
       )}
 
+      {/* Imagen */}
       <Image
-        src={ceramico.imagen[0]}
+        src={ceramico.imagen[2]}
         alt={ceramico.nombre}
         width={500}
         height={500}
-        className="object-cover h-[230px] w-[300px] rounded hover:scale-101 transition-all duration-100 "
+        className="object-cover rounded h-[180px] w-full hover:scale-105 transition-all duration-300"
       />
-      <div className="p-1 flex flex-col items-right rounded text-[13px] w-full text-amber-50">
-        <p className="font-phudu ">{ceramico.nombre}</p>
-        <p className="font-phudu ">${ceramico.valor}</p>
-        <p className="font-phudu">DIMENSIONES: {ceramico.dimensiones}</p>
-        <p className="font-phudu ">CANTIDAD POR CAJA: {ceramico.cantidad}</p>
+
+      {/* Detalles */}
+      <div className="p-1 flex flex-col items-start text-[13px] w-full text-[#c0b283] font-phudu mt-2">
+        <p className="text-white font-bold">{ceramico.nombre}</p>
+        <p className="text-sm">${ceramico.valor}</p>
+        <p className="text-xs">Dimensiones: {ceramico.dimensiones}</p>
+        <p className="text-xs">Caja: {ceramico.cantidad}</p>
       </div>
-      <button 
-      onClick={onClick}
-      className="absolute bottom-1 text-[16px] font-rancho tracking-widest ver-hover bn19">
+
+      {/* Botón */}
+      <button
+        onClick={onClick}
+        className="absolute bottom-1 text-xl font-rancho tracking-widest text-[#1a1a1a] bg-[#c0b283] px-3 py-[2px] rounded hover:bg-[#d8bb91] transition duration-300"
+      >
         ver
       </button>
     </div>
