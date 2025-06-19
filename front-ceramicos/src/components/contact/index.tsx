@@ -143,21 +143,26 @@ export const Contact = () => {
   return (
     <div
       id="contacto"
-      className="flex flex-col h-[97vh] md:h-[91vh] scroll-mt-16 bg-custom"
+      className="flex flex-col h-[97vh] md:h-[100vh]  pt-20 bg-gradient-to-b from-[#000000] via-[#292929db] to-[#272727] relative"
     >
-      <h1
-        style={{ color: "#bababa" }}
-        className="font-rancho font-light text-left md:mx-18 text-[2.4rem]"
-      >
+      <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#000000,transparent)]">
+        <div
+          className="bg-cover bg-no-repeat  bg-left  mask-custom"
+          style={{ backgroundImage: "url(/background-contact.jpg)" }}
+        ></div>
+      </div>
+      <h1 className="font-rancho font-light color-font-2 text-left md:mx-18 text-[2.4rem]">
         Contactanos
       </h1>
 
-      <div className="flex justify-between items-start px-19">
+      <div className="flex justify-evenly items-center ">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col bg-[url('/background-app.jpg')] bg-cover rounded bg-center h-[35rem] w-[30rem] p-4 font-poiret-one font-extrabold gap-2"
+          className="flex flex-col h-[30rem] w-[30rem] p-2 font-phudu bg-gradient-to-b from-transparent via-[#373737e2] to-[#524c385e] rounded-md gap-2 "
         >
-          <label htmlFor="name">NOMBRE</label>
+          <label className="color-font-2" htmlFor="name">
+            NOMBRE
+          </label>
           <div className="flex gap-1">
             <input
               type="text"
@@ -165,14 +170,16 @@ export const Contact = () => {
               value={form.name}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="p-1 bg-white rounded w-[15rem] mb-1"
+              className="p-1 bg-[#dcd0c0] color-font-2 rounded w-[15rem]"
             />
             {touched.name && errors.name && (
-              <p className="text-red-500">{errors.name}</p>
+              <p className="text-red-400">{errors.name}</p>
             )}
           </div>
 
-          <label htmlFor="surname">APELLIDO</label>
+          <label className="color-font-2" htmlFor="surname">
+            APELLIDO
+          </label>
           <div className="flex gap-1">
             <input
               type="text"
@@ -180,14 +187,16 @@ export const Contact = () => {
               value={form.surname}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="p-1 bg-white rounded w-[15rem] mb-1"
+              className="p-1 bg-[#dcd0c0] color-font-2 rounded w-[15rem]"
             />
             {touched.surname && errors.surname && (
-              <p className="text-red-500">{errors.surname}</p>
+              <p className="text-red-400">{errors.surname}</p>
             )}
           </div>
 
-          <label htmlFor="phone">TELÉFONO</label>
+          <label className="color-font-2" htmlFor="phone">
+            TELÉFONO
+          </label>
           <div className="flex gap-1">
             <input
               type="text"
@@ -195,14 +204,16 @@ export const Contact = () => {
               value={form.phone}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="p-1 bg-white rounded w-[15rem] mb-1"
+              className="p-1 bg-[#dcd0c0] color-font-2 rounded w-[15rem]"
             />
             {touched.phone && errors.phone && (
-              <p className="text-red-500">{errors.phone}</p>
+              <p className="text-red-400">{errors.phone}</p>
             )}
           </div>
 
-          <label htmlFor="email">EMAIL</label>
+          <label className="color-font-2" htmlFor="email">
+            EMAIL
+          </label>
           <div className="flex gap-1">
             <input
               type="text"
@@ -210,17 +221,19 @@ export const Contact = () => {
               value={form.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="p-1 bg-white rounded w-[15rem] mb-1"
+              className="p-1 bg-[#dcd0c0] color-font-2 rounded w-[15rem]"
             />
             {touched.email && errors.email && (
-              <p className="text-red-500">{errors.email}</p>
+              <p className="text-red-400">{errors.email}</p>
             )}
           </div>
-          <div className="flex flex-col gap-1 mt-6">
+          <div className="flex flex-col gap-1">
             <div className="flex justify-between">
-              <label htmlFor="message">MENSAJE</label>
+              <label className="color-font-2" htmlFor="message">
+                MENSAJE
+              </label>
               {touched.message && errors.message && (
-                <p className="text-red-500">{errors.message}</p>
+                <p className="text-red-400">{errors.message}</p>
               )}
             </div>
             <textarea
@@ -230,7 +243,7 @@ export const Contact = () => {
               onBlur={handleBlur}
               rows={4}
               cols={30}
-              className="p-1 bg-white rounded"
+              className="p-1 bg-[#dcd0c0] color-font-2 rounded"
             />
           </div>
           <button
@@ -241,47 +254,36 @@ export const Contact = () => {
           </button>
         </form>
         {/* DIRECCION */}
-        <div className=" font-poiret-one font-extrabold flex flex-col gap-2 text-[14px] items-center justify-center  md:h-[30rem]">
-          <h3
-            style={{ color: "#bababa" }}
-            className="text-center text-4xl w-full font-rancho "
-          >
-            Encontranos en
-          </h3>
+        <div className=" flex flex-col items-center justify-center md:h-[30rem] gap-4 font-poiret-one font-extrabold text-[14px] px-4 text-center ">
+          {/* Título */}
+          <h3 className="text-4xl font-rancho color-font-2">Encontranos en</h3>
+
+          {/* Dirección */}
           <a
             href="https://maps.app.goo.gl/YuBqy4cyh26zL5bJA"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline "
+            className="hover:underline color-font-3"
           >
-            <h4 style={{ color: "#bababa" }} className="text-center w-full">
-              J. Hernandez 4490 esq. S. Liniers Claypole PBA
-            </h4>
-            <h4 style={{ color: "#bababa" }} className="text-center w-full">
-              a 100 mts a la Estación Claypole
-            </h4>
+            <h4 className="font-phudu font-bold">J. Hernández 4490 esq. S. Liniers, Claypole, PBA</h4>
+            <h4 className="font-phudu font-bold">a 100 mts de la Estación Claypole</h4>
           </a>
 
-          <div className="relative group w-full md:w-[450px] h-[400px] rounded overflow-hidden">
+          {/* Mapa */}
+          <div className="relative group w-full max-w-[450px] h-[300px] md:h-[400px] rounded overflow-hidden">
             <iframe
-              className="pointer-events-none group-hover:pointer-events-auto"
+              className="w-full h-full pointer-events-none group-hover:pointer-events-auto"
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d204.75964725243506!2d-58.33918134717725!3d-34.802058285409!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32df17dc5fe73%3A0xbfbdb30ba7daca91!2sDon%20cer%C3%A1micos!5e0!3m2!1ses-419!2sar!4v1749953363088!5m2!1ses-419!2sar"
-              width="100%"
-              height="100%"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          {/* REDES */}
-          <div className="flex justify-center gap-6 w-full max-w-[300px] text-[14px] mt-2 ">
-            <h3
-              style={{ color: "#bababa" }}
-              className="text-center text-2xl font-rancho"
-            >
-              Redes
-            </h3>
-            <div className="flex justify-center items-center gap-4 w-full ">
+
+          {/* Redes */}
+          <div className="flex flex-col items-center justify-center gap-2 mt-4">
+            <h3 className="text-2xl font-rancho color-font-2">Redes</h3>
+            <div className="flex justify-center items-center gap-4">
               <a
                 href="https://www.facebook.com/p/Don-cer%C3%A1micos-100068413961241"
                 target="_blank"
@@ -317,12 +319,10 @@ export const Contact = () => {
               </a>
             </div>
           </div>
-          <div
-            style={{ color: "#bababa" }}
-            className=" flex justify-center items-center gap-3 w-full max-w-[400px] text-[14px] "
-          >
+
+          {/* Contacto */}
+          <div className="flex justify-center items-center gap-3 color-font-2 text-sm mt-2 flex-wrap">
             <p>11-2345-6789</p>
-            <p className="text-center text-4xl">.</p>
             <p>donceramicos.info@gmail.com</p>
           </div>
         </div>

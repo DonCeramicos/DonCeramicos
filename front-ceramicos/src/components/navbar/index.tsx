@@ -8,7 +8,7 @@ export const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-custom-2 flex justify-evenly items-center px-1  sticky top-0 z-100">
+    <nav className="bg-custom-2 flex justify-evenly items-center px-2  sticky top-0 z-100">
       {/* Logo */}
       <a href="#home">
         <Image src="/logo-bg.png" alt="logo" width={130} height={100} />

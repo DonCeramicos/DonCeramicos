@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="w-full z-60 relative flex flex-col  gap-6 md:flex-row md:justify-evenly bg-amber-900 text-amber-50 py-3 px-4 h-auto">
+    <footer className="w-full z-60 relative flex flex-col  gap-6 md:flex-row md:justify-evenly bg-custom-2 color-font-2 py-3 px-4 h-auto">
       
       {/* CONTACTO */}
       <div className="flex flex-col gap-2 w-full max-w-[240px] text-[14px] items-center md:items-start">

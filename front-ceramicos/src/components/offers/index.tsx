@@ -21,19 +21,12 @@ export const Offers = () => {
   return (
     <div
       id="ofertas"
-      className="scroll-mt-24 flex flex-col justify-center items-center h-[100vh] md:h-[90vh] relative"
+      className="scroll-mt-24 flex flex-col justify-center items-center h-[100vh] md:h-[90vh] "
     >
-      {/* Imagen de fondo */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 z-0"
-        style={{ backgroundImage: "url('/background-offers.jpg')" }} 
-      ></div>
-
       {/* Contenido */}
-      <div className="flex items-center justify-between w-[90%] z-10">
+      <div className="flex items-center justify-between w-[90%] z-10 ">
         <h1 className="relative inline-block text-[2.4rem] font-rancho font-light text-left mx-8 md:mx-1 text-white group">
           Ofertas Mensuales
-          <span className="block h-[3px] w-0 bg-[#c0b283] rounded-full transition-all duration-500 group-hover:w-full"></span>
         </h1>
 
         {/* Paginado */}
@@ -55,7 +48,7 @@ export const Offers = () => {
       </div>
 
       {/* Productos */}
-      <div className="grid grid-cols-4 overflow-y-auto h-[99%] w-[80%] relative py-1 px-4 justify-items-center backdrop-blur-xs z-10 border">
+      <div className="grid grid-cols-4 overflow-y-auto h-[34rem] w-[70rem] relative py-1 px-4 justify-items-center  backdrop-blur-xs border-gray-500/30 border-[1px] ">
         {currentItems.map((ceramico: ICeramicos) => (
           <Product_Card
             ceramico={ceramico}

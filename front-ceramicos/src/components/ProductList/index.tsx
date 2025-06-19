@@ -31,12 +31,13 @@ export const ProductList = () => {
   return (
     <div
       id="catalogo"
-      className="scroll-mt-24 flex flex-col justify-center items-center h-[97vh] md:h-[90vh]  "
+      className="scroll-mt-24 flex flex-col justify-center items-center h-[98vh] md:h-[90vh]  "
     >
+      {/* Contenido */}
       <div className="flex items-center justify-between w-[90%] ">
   <h1 className="relative inline-block text-[2.4rem] font-rancho font-light text-left mx-8 md:mx-1 text-white group">
   Nuestros Productos
-  <span className="block h-[3px] w-0 bg-[#c0b283] rounded-full transition-all duration-500 group-hover:w-full"></span>
+
 </h1>
 
         {/* Paginado */}
@@ -45,7 +46,7 @@ export const ProductList = () => {
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`p-3 w-5 h-5 rounded-xs text-white transition duration-200 flex justify-center items-center hover:cursor-pointer ${
+              className={`p-2 w-5 h-5 rounded-xs text-white transition duration-200 flex justify-center items-center hover:cursor-pointer ${
                 page === currentPage
                   ? "bg-btn-paginado-selected shadow-lg color-font scale-105"
                   : "bg-btn-paginado hover:bg-stone-500"
@@ -60,7 +61,7 @@ export const ProductList = () => {
 
 
         {/* Productos */}
-        <div className="grid grid-cols-4 overflow-y-auto h-[99%] w-[80%] relative py-1 px-4 justify-items-center  backdrop-blur-xs border ">
+        <div className="grid grid-cols-4 overflow-y-auto h-[34rem] w-[70rem] relative py-1 px-4 justify-items-center  backdrop-blur-xs border-gray-900/40 border-[1px] ">
           {currentItems.map((ceramico: ICeramicos) => (
             <Product_Card
               ceramico={ceramico}

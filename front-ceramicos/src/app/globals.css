@@ -49,6 +49,10 @@ body {
   background-size: cover;
   background-position: center;
 }
+.mask-custom {
+  mask-image: linear-gradient(to top, transparent 0%, black 0%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
+}
 
 /*TIPOFRAGIAS*/
 .font-phudu {
@@ -221,14 +225,13 @@ body {
   display: inline-block;
   font-family: rancho;
   font-size: 20px;
-  background-color: rgb(211, 122, 5);
+  background-color: rgb(230, 168, 86);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .btn-42 {
-  border: 1px solid rgb(0, 0, 0);
   z-index: 1;
   color: rgb(0, 0, 0);
 }
@@ -243,6 +246,7 @@ body {
   z-index: -1;
   background: rgb(93, 82, 82);
   transition: all 0.3s ease;
+  border-radius: 5px;
 }
 
 .btn-42:hover {
