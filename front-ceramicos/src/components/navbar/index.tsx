@@ -8,11 +8,11 @@ export const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-custom-2 flex justify-evenly items-center px-2  sticky top-0 z-100">
+    <nav className="bg-custom-2 flex justify-evenly items-center pt-1  sticky top-0 z-100">
       {/* Logo */}
-      <a href="#home">
+      <Link className="hover:scale-102 transition-all duration-300" href="/#home">
         <Image src="/logo-bg.png" alt="logo" width={130} height={100} />
-      </a>
+      </Link>
 
       {/* Listado para pc*/}
       <ul  className=" color-font-2 hidden md:flex gap-6 font-rancho tracking-wider text-[20px] p-2 rounded">

@@ -210,10 +210,9 @@ body {
 /*ANIMACION DE BOTON ENVIAR*/
 
 .btn41-43 {
-  padding: 10px 25px;
-  font-family: "Roboto", sans-serif;
+  padding: 1px 5px;
   font-weight: 500;
-  width: 200px;
+  width: 100px;
   height: 50px;
   border: none;
   border-radius: 5px;
@@ -226,9 +225,7 @@ body {
   font-family: rancho;
   font-size: 20px;
   background-color: rgb(230, 168, 86);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ 
 }
 
 .btn-42 {

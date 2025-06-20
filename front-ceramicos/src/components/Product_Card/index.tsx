@@ -15,7 +15,7 @@ export const Product_Card = ({
 }: ProductCardProps) => {
   return (
     <div
-      className="relative h-[300px] w-[170px] rounded-lg p-2 bg-[#3e3e3ed1] flex flex-col items-center shadow-md hover:shadow-lg transition-shadow duration-300"
+      className="relative h-[270px] w-[170px] rounded-lg p-2 bg-[#3e3e3ed1] flex flex-col items-center shadow-md hover:shadow-lg transition-shadow duration-300"
       key={ceramico.id}
     >
       {/* Badge de oferta */}
@@ -40,8 +40,7 @@ export const Product_Card = ({
       <div className="p-1 flex flex-col items-start text-[13px] w-full text-[#c0b283] font-phudu mt-2  tracking-wide">
         <p className="color-font-2">{ceramico.nombre}</p>
         <p className="text-sm">${ceramico.valor}</p>
-        <p className="text-xs">Dimensiones: {ceramico.dimensiones}</p>
-        <p className="text-xs">Caja: {ceramico.cantidad}</p>
+
       </div>
 
       {/* Botón */}

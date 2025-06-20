@@ -11,6 +11,9 @@ export interface ICeramicos {
   dimensiones: string;
   oferta?: boolean;
   cantidad?: number;
+  descripcion?: string;
+  categoria?: string;
+  marca?: string;
 }
 
 export interface Idestacadas {
@@ -20,15 +23,18 @@ export interface Idestacadas {
   imagen: string[];
   ambiente: string;
   dimensiones: string;
-  cantidad: number;
   oferta: number;
+  cantidad?: number;
+  descripcion?: string;
+  categoria?: string;
+  marca?: string;
 }
 
 interface IContextProps {
   ceramicos: ICeramicos[];
   setCeramicos: (ceramicos: ICeramicos[]) => void;
   ofertas: ICeramicos[];
-  destacadas: Idestacadas[]
+  destacadas: Idestacadas[];
 }
 
 // Context por defecto
@@ -57,8 +63,7 @@ export const Context = ({ children }: ContextProviderProps) => {
       const data = await getDestacados();
       setDestacadas(data);
       console.log(data);
-      
-    }
+    };
     fetchData();
     fetchData2();
   }, []);

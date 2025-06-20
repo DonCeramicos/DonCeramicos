@@ -2,10 +2,7 @@
 import { useState, useEffect, useContext } from "react";
 import { ContextApp, ICeramicos, Idestacadas } from "@/context/context";
 import { useRouter } from "next/navigation";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
 import Image from "next/image";
-import WhatsAppFloatingButton from "@/components/whatsApp-Button";
 import { useParams } from "next/navigation";
 
 export default function ProductDetailPage() {
@@ -42,7 +39,7 @@ export default function ProductDetailPage() {
     router.back();
   };
   return (
-    <div className="relative bg-custom-2 flex flex-col text-white h-[75.6vh] p-4">
+    <div className="relative bg-custom-2 flex flex-col text-white h-[76.8vh] p-4">
       <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#000000,transparent)]">
         <div
           className="bg-cover bg-no-repeat  bg-left  mask-custom"
@@ -50,7 +47,7 @@ export default function ProductDetailPage() {
         ></div>
       </div>
       <button
-        className="absolute right-2 bg-[#c0b283] hover:bg-[#dcd0c0]text-white py-1 px-1 rounded w-20 hover:cursor-pointer"
+        className="absolute right-2 bg-[#c0b283]  hover:bg-amber-400/35 transition-all duration-300 text-white py-1 px-1 rounded w-20 hover:cursor-pointer"
         onClick={handleBack}
       >
         Volver
@@ -108,30 +105,40 @@ export default function ProductDetailPage() {
           />
 
           {/* Capa con fondo desenfocado y contenido encima */}
-          <div className="z-10 flex flex-col items-center justify-center w-full h-full bg-[#2c2924d4] font-bold font-poiret-one px-4 tracking-wider">
+          <div className="z-10 flex flex-col items-center justify-evenly w-full h-full bg-[#2c2924d4] font-bold font-poiret-one px-4 tracking-wider">
             {/* Título centrado */}
-            <h1 className="text-2xl font-bold mb-4 text-center ">
+            <h1 className="text-2xl  mb-4 text-center uppercase bg-[#46402cd7] rounded p-1 ">
               {itemDetail.nombre}
             </h1>
+            <p className="mb-4 color-font-2 bg-[#46402cb6] p-2 rounded">{itemDetail.descripcion}</p>
 
             {/* Datos centrados en dos columnas */}
             <div className="grid grid-cols-2 gap-x-5 gap-y-6 max-w-[500px] w-full text-center text-sm ">
               <div className="flex flex-col gap-1">
-                <p>
-                  <span className="font-semibold">Dimensiones:</span>
+                <p className="uppercase bg-[#46402cd7] rounded">
+                  <span className="color-font-2">DIMENSIONES: </span>
                   {itemDetail.dimensiones}
+                </p>
+                <p className="uppercase bg-[#46402cd7] rounded">
+                  <span className="color-font-2 uppercase">MARCA: </span>
+                  {itemDetail.marca}
                 </p>
               </div>
               <div className="flex flex-col gap-1">
-                <p>
-                  <span className="font-semibold">Cantidad por caja:</span>
+                <p className="uppercase bg-[#46402cd7] rounded">
+                  <span className="color-font-2">CANTIDAD: </span>
                   {itemDetail.cantidad}
+                </p>
+
+                <p className="uppercase bg-[#46402cd7] rounded">
+                  <span className="color-font-2"> SUPERFICIES: </span>
+                  {itemDetail.categoria}
                 </p>
               </div>
 
               <div className="col-span-2 flex flex-col items-center gap-2 w-full ">
-                <p>
-                  <span className="font-semibold">Precio:</span> $
+                <p className="uppercase bg-[#46402cd7] p-1 rounded ">
+                  <span className="color-font-2">PRECIO:</span> $
                   {itemDetail.valor}
                 </p>
                 <div className="flex gap-2 overflow-x-auto scroll-hidden">
@@ -148,7 +155,7 @@ export default function ProductDetailPage() {
 
               <div className="col-span-2 flex justify-center mt-4">
                 <button
-                  className="bg-amber-50 hover:bg-amber-400 text-black font-bold py-2 px-4 rounded hover:cursor-pointer hover:scale-110 transition duration-500"
+                  className="bg-amber-50 hover:bg-amber-400/35 text-black font-bold py-2 px-4 rounded hover:cursor-pointer hover:scale-110 transition duration-500"
                   onClick={() => router.push("/#contacto")}
                 >
                   Pedi tu presupuesto
