@@ -25,17 +25,17 @@ export const Carousel = () => {
     return () => clearInterval(interval);
   }, [destacadas.length]);
   const handleDetail = async (id: string) => {
-    router.push(`/detailItem/${id}`);   
+    router.push(`/detailItem/${id}`);
   };
 
   if (!destacadas || destacadas.length === 0) return <p>No hay destacadas.</p>;
 
   return (
-<div className="w-full h-[12rem] bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] bottom-0 absolute flex items-center justify-center gap-5 p-1 rounded-xs shadow-lg ">
-
-        <p className=" font-rancho color-font-4 text-3xl">Ofertas Destacadas</p>
-      <div className="relative w-[250px] h-[150px] overflow-hidden rounded ">
-        <div
+    <section className="w-full h-[12rem] bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] bottom-0 absolute flex items-center justify-center gap-5 p-1 rounded-xs shadow-lg ">
+      <h2 className="sr-only"> carrusel de ofertas destacadas</h2>
+      <p className=" font-rancho color-font-4 text-3xl">Ofertas Destacadas</p>
+      <section className="relative w-[250px] h-[150px] overflow-hidden rounded ">
+        <article
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
@@ -49,7 +49,7 @@ export const Carousel = () => {
                 src={destacada.imagen[2]}
                 width={500}
                 height={500}
-                alt="oferta destacada"
+                alt={`Imagen del producto ${destacada.nombre} con ${destacada.oferta}% de descuento`}
                 className="object-cover h-full w-full"
               />
               <div className="absolute top-0 left-0 overflow-hidden w-[76px] h-[76px]">
@@ -59,45 +59,51 @@ export const Carousel = () => {
               </div>
             </div>
           ))}
-        </div>
+        </article>
 
         <button
+          aria-label="ver anterior"
           onClick={prev}
           className="absolute top-1/2 left-[-3px] transform -translate-y-1/2 text-white rounded z-20 hover:cursor-pointer"
-        ><Image
-          src="/arrow-icon.png"
-          width={500}
-          height={500}
-          alt="oferta destacada"
-          className="object-cover h-5 w-5 hover:scale-108 transition-all duration-100 rotate-180 "
-        />
+        >
+          <Image
+            src="/arrow-icon.png"
+            width={500}
+            height={500}
+            alt="miniatura de flecha izquierda"
+            className="object-cover h-5 w-5 hover:scale-108 transition-all duration-100 rotate-180 "
+          />
         </button>
         <button
+          aria-label="ver siguiente"
           onClick={next}
           className="absolute top-1/2 right-[-3px] transform -translate-y-1/2 text-white rounded z-20 hover:cursor-pointer"
         >
           <Image
-          src="/arrow-icon.png"
-          width={500}
-          height={500}
-          alt="oferta destacada"
-          className="object-cover h-5 w-5 hover:scale-108 transition-all duration-100 "
-        />
+            src="/arrow-icon.png"
+            width={500}
+            height={500}
+            alt="miniatura de flecha derecha"
+            className="object-cover h-5 w-5 hover:scale-108 transition-all duration-100 "
+          />
         </button>
 
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <article className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <h2 className="sr-only">selector de carrusel</h2>
           {destacadas.map((_, i) => (
             <div
               key={i}
+              role="button"
+              aria-label={`Ir al slide ${i + 1}`}
+              aria-current={current === i ? "true" : undefined}
               onClick={() => setCurrent(i)}
               className={`w-3 h-3 rounded-full cursor-pointer ${
                 current === i ? "bg-red-600" : "bg-gray-900"
               }`}
             />
           ))}
-        </div>
-      </div>
-      
-    </div>
+        </article>
+      </section>
+    </section>
   );
 };

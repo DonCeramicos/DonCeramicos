@@ -10,8 +10,9 @@ export const Navbar = () => {
   return (
     <nav className="bg-custom-2 flex justify-evenly items-center pt-1  sticky top-0 z-100">
       {/* Logo */}
+      <h2 className="sr-only">Barra de navegación con opciones para dirigirse a las distintas secciones de la pagina</h2>
       <Link className="hover:scale-102 transition-all duration-300" href="/#home">
-        <Image src="/logo-bg.png" alt="logo" width={130} height={100} />
+        <Image src="/logo-bg.png" alt="logo de Don Ceramicos" width={130} height={100} />
       </Link>
 
       {/* Listado para pc*/}
@@ -33,6 +34,7 @@ export const Navbar = () => {
 {/* Botón hamburguesa - Mobile */}
 {!isOpen && (
   <button
+    aria-label="boton para abrir menú"
     onClick={toggleMenu}
     className="md:hidden text-amber-900 focus:outline-none z-50"
   >
@@ -41,6 +43,7 @@ export const Navbar = () => {
       fill="none"
       stroke="black"
       viewBox="0 0 24 24"
+      aria-label="logo que indica abrir menú"
     >
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
     </svg>
@@ -55,29 +58,30 @@ export const Navbar = () => {
           <button
             onClick={toggleMenu}
             className="absolute top-8 right-1 text-white"
-            aria-label="Cerrar menú"
+            aria-label="boton de cerrar menú"
           >
             <svg
               className="w-8 h-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-label="logo que indica cerrar menú"
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
 
           {/* Links mobile */}
-          <a href="#home" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+          <a  href="#home" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
             INICIO
           </a>
-          <a href="#catalogo" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+          <a  href="#catalogo" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
             CATALOGO
           </a>
-          <a href="#ofertas" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+          <a  href="#ofertas" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
             OFERTAS
           </a>
-          <a href="#contacto" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+          <a  href="#contacto" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
             CONTACTO
           </a>
         </div>

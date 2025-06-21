@@ -39,7 +39,8 @@ export default function ProductDetailPage() {
     router.back();
   };
   return (
-    <div className="relative bg-custom-2 flex flex-col text-white h-[76.8vh] p-4">
+    <main className="relative bg-custom-2 flex flex-col text-white h-[75vh] p-4">
+      <h2 className="sr-only">vista detallada del producto seleccionado</h2>
       <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#000000,transparent)]">
         <div
           className="bg-cover bg-no-repeat  bg-left  mask-custom"
@@ -47,33 +48,35 @@ export default function ProductDetailPage() {
         ></div>
       </div>
       <button
+        aria-label="Volver a la seccion anterior"
         className="absolute right-2 bg-[#c0b283]  hover:bg-amber-400/35 transition-all duration-300 text-white py-1 px-1 rounded w-20 hover:cursor-pointer"
         onClick={handleBack}
       >
         Volver
       </button>
       {/*  seccion para generar 3 filas en forma de columnas */}
-      <div className="flex justify-evenly">
+      <section className="flex justify-evenly">
+        <h2 className="sr-only">listado vertical de imagenes del producto</h2>
         {/* primer seccion para el array de imagenes */}
-        <div className="flex flex-col items-center justify-center h-[60vh] overflow-y-auto scroll-hidden rounded p-1">
+        <section className="flex flex-col items-center justify-center h-[60vh] overflow-y-auto scroll-hidden rounded p-1">
           {itemDetail.imagen.map((imagen, index) => (
-            <div onClick={() => handleImageClick(imagen)}>
+            <article onClick={() => handleImageClick(imagen)}>
               <img
                 key={index}
                 src={imagen}
-                alt={`Imagen ${index + 1}`}
+                alt={`Imagen miniatura del producto seleccionado ${itemDetail.nombre}`}
                 className="mb-1 h-30 w-30 hover:cursor-pointer rounded-xs hover:opacity-50 transition duration-500 ease-in-out"
               />
-            </div>
+            </article>
           ))}
-        </div>
+        </section>
         {/*  seccion para la foto del interior */}
-
-        <div className="flex items-center justify-center h-[73vh] w-[30vw] rounded relative">
+        <h2 className="sr-only">imagen de ambiente del producto</h2>
+        <section className="flex items-center justify-center h-[73vh] w-[30vw] rounded relative">
           <div className="relative h-[73vh] w-[30vw] rounded">
             <Image
               src={itemDetail.ambiente || "/ambiente-default.jpg"}
-              alt="Ambiente"
+              alt="Ambiente de fondo del producto"
               width={500}
               height={500}
               className="object-cover  w-full h-full rounded"
@@ -90,11 +93,12 @@ export default function ProductDetailPage() {
               />
             )}
           </div>
-        </div>
+        </section>
 
         {/* seccion para los datos del producto con la foto de ambiente con blur */}
 
-        <div className="relative flex flex-col h-[73vh] w-[30vw] items-center justify-center rounded overflow-hidden">
+        <section className="relative flex flex-col h-[73vh] w-[30vw] items-center justify-center rounded overflow-hidden">
+          <h2 className="sr-only">detalles del producto seleccionado</h2>
           {/* Fondo desenfocado */}
           <Image
             src={itemDetail.ambiente || "/ambiente-default.jpg"}
@@ -108,36 +112,45 @@ export default function ProductDetailPage() {
           <div className="z-10 flex flex-col items-center justify-evenly w-full h-full bg-[#2c2924d4] font-bold font-poiret-one px-4 tracking-wider">
             {/* Título centrado */}
             <h1 className="text-2xl  mb-4 text-center uppercase bg-[#46402cd7] rounded p-1 ">
+              <span className="sr-only">Nombre del producto</span>
               {itemDetail.nombre}
             </h1>
-            <p className="mb-4 color-font-2 bg-[#46402cb6] p-2 rounded">{itemDetail.descripcion}</p>
+            <p className="mb-4 color-font-2 bg-[#46402cb6] p-2 rounded">
+              <span className="sr-only">Descripcion del producto</span>
+              {itemDetail.descripcion}
+            </p>
 
             {/* Datos centrados en dos columnas */}
-            <div className="grid grid-cols-2 gap-x-5 gap-y-6 max-w-[500px] w-full text-center text-sm ">
-              <div className="flex flex-col gap-1">
+            <section className="grid grid-cols-2 gap-x-5 gap-y-6 max-w-[500px] w-full text-center text-sm ">
+              <article className="flex flex-col gap-1">
                 <p className="uppercase bg-[#46402cd7] rounded">
                   <span className="color-font-2">DIMENSIONES: </span>
+                  <span className="sr-only">Dimensiones del producto</span>
                   {itemDetail.dimensiones}
                 </p>
                 <p className="uppercase bg-[#46402cd7] rounded">
                   <span className="color-font-2 uppercase">MARCA: </span>
+                  <span className="sr-only">Marca del producto</span>
                   {itemDetail.marca}
                 </p>
-              </div>
-              <div className="flex flex-col gap-1">
+              </article>
+              <article className="flex flex-col gap-1">
                 <p className="uppercase bg-[#46402cd7] rounded">
                   <span className="color-font-2">CANTIDAD: </span>
+                  <span className="sr-only">Cantidad del producto</span>
                   {itemDetail.cantidad}
                 </p>
 
                 <p className="uppercase bg-[#46402cd7] rounded">
                   <span className="color-font-2"> SUPERFICIES: </span>
+                  <span className="sr-only">Superficie del producto</span>
                   {itemDetail.categoria}
                 </p>
-              </div>
+              </article>
 
-              <div className="col-span-2 flex flex-col items-center gap-2 w-full ">
+              <article className="col-span-2 flex flex-col items-center gap-2 w-full ">
                 <p className="uppercase bg-[#46402cd7] p-1 rounded ">
+                  <span className="sr-only">Precio del producto</span>
                   <span className="color-font-2">PRECIO:</span> $
                   {itemDetail.valor}
                 </p>
@@ -151,20 +164,21 @@ export default function ProductDetailPage() {
                     />
                   ))}
                 </div>
-              </div>
+              </article>
 
-              <div className="col-span-2 flex justify-center mt-4">
+              <article className="col-span-2 flex justify-center mt-4">
                 <button
+                  aria-label="Pedi tu presupuesto"
                   className="bg-amber-50 hover:bg-amber-400/35 text-black font-bold py-2 px-4 rounded hover:cursor-pointer hover:scale-110 transition duration-500"
                   onClick={() => router.push("/#contacto")}
                 >
                   Pedi tu presupuesto
                 </button>
-              </div>
-            </div>
+              </article>
+            </section>
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </main>
   );
 }
