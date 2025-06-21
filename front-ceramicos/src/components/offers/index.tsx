@@ -72,7 +72,7 @@ export const Offers = () => {
       {/* Productos en oferta */}
       <section
         aria-label="Lista de productos con descuento"
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 overflow-y-auto h-[34rem] w-full max-w-[70rem] px-4 mt-4 border border-gray-500/30 backdrop-blur-sm rounded-md"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 overflow-y-auto h-[34rem] w-full max-w-[70rem] px-4 mt-4  backdrop-blur-sm rounded-md shadow-2xl shadow-[#0000008a]"
       >
         {currentItems.map((ceramico: ICeramicos) => (
           <Product_Card

@@ -280,10 +280,10 @@ const validateForm = (form: IForm): Ierror => {
         {/* DIRECCION */}
         <section className=" flex flex-col items-center justify-center md:h-[30rem] gap-4 font-poiret-one font-extrabold text-[14px] px-4 text-center ">
           {/* Título */}
-          <h2 className="sr-only"> seccion con redes sociales y mapa interactivo</h2>
-          <h3
+          <span className="sr-only"> seccion con redes sociales y mapa interactivo</span>
+          <h2
           aria-label="subtitulo que dice: Encontranos en"
-           className="text-4xl font-rancho color-font-2">Encontranos en</h3>
+           className="text-4xl font-rancho color-font-2">Encontranos en</h2>
 
           {/* Dirección */}
           <a
@@ -293,14 +293,13 @@ const validateForm = (form: IForm): Ierror => {
             rel="noopener noreferrer"
             className="hover:underline color-font-3"
           >
-            <h4 aria-label="direccion de la tienda Don Ceramicos: J Hernández 4490 esq. S. Liniers, Claypole, PBA" className="font-phudu font-bold">J. Hernández 4490 esq. S. Liniers, Claypole, PBA</h4>
-            <h4 aria-label="indicacion extra : a 100 mts de la Estación Claypole" className="font-phudu font-bold">a 100 mts de la Estación Claypole</h4>
+            <h3 aria-label="direccion de la tienda Don Ceramicos: J Hernández 4490 esq. S. Liniers, Claypole, PBA" className="font-phudu font-bold">J. Hernández 4490 esq. S. Liniers, Claypole, PBA</h3>
+            <h3 aria-label="indicacion extra : a 100 mts de la Estación Claypole" className="font-phudu font-bold">a 100 mts de la Estación Claypole</h3>
           </a>
 
           {/* Mapa */}
           <div className="relative group w-full max-w-[450px] h-[300px] md:h-[400px] rounded overflow-hidden">
             <iframe
-
               title="mapa de google maps con la direccion de la tienda Don Ceramicos"
               aria-label="mapa de google maps con la direccion de la tienda Don Ceramicos"
               className="w-full h-full pointer-events-none group-hover:pointer-events-auto"

@@ -32,7 +32,7 @@ export const Carousel = () => {
 
   return (
     <section className="w-full h-[12rem] bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] bottom-0 absolute flex items-center justify-center gap-5 p-1 rounded-xs shadow-lg ">
-      <h2 className="sr-only"> carrusel de ofertas destacadas</h2>
+      <span className="sr-only"> carrusel de ofertas destacadas</span>
       <p className=" font-rancho color-font-4 text-3xl">Ofertas Destacadas</p>
       <section className="relative w-[250px] h-[150px] overflow-hidden rounded ">
         <article
@@ -89,7 +89,7 @@ export const Carousel = () => {
         </button>
 
         <article className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          <h2 className="sr-only">selector de carrusel</h2>
+          <span className="sr-only">selector de carrusel</span>
           {destacadas.map((_, i) => (
             <div
               key={i}

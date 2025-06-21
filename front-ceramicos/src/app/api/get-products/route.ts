@@ -14,7 +14,8 @@ export async function GET(){
             ...doc.data(),
         }))        
         return NextResponse.json(products,{status:200})
-    }catch(error){        
+    }catch(error){      
+        console.log(error)  
         return NextResponse.json({error:"error al obtener los productos"}, {status:500})
     }
 }
