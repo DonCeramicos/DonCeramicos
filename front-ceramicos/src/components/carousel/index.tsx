@@ -31,9 +31,9 @@ export const Carousel = () => {
   if (!destacadas || destacadas.length === 0) return <p>No hay destacadas.</p>;
 
   return (
-    <section className="w-full h-[12rem] bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] bottom-0 absolute flex items-center justify-center gap-5 p-1 rounded-xs shadow-lg ">
+    <section className="w-full h-[12rem] bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] bottom-0 absolute flex flex-col items-center md:items-center md:justify-center gap-2 p-1 rounded-xs shadow-lg ">
       <span className="sr-only"> carrusel de ofertas destacadas</span>
-      <p className=" font-rancho color-font-4 text-3xl">Ofertas Destacadas</p>
+      <p className="md:hidden font-rancho text-[#101010] text-3xl">Ofertas Destacadas</p>
       <section className="relative w-[250px] h-[150px] overflow-hidden rounded ">
         <article
           className="flex transition-transform duration-500 ease-in-out"
@@ -98,7 +98,7 @@ export const Carousel = () => {
               aria-current={current === i ? "true" : undefined}
               onClick={() => setCurrent(i)}
               className={`w-3 h-3 rounded-full cursor-pointer ${
-                current === i ? "bg-red-600" : "bg-gray-900"
+                current === i ? "bg-[#c1bfb8] border-2 border-red-800" : "bg-custom-2"
               }`}
             />
           ))}
