@@ -1,3 +1,4 @@
+
 export const getProducts = async () => {
   try {
     const response = await fetch("/api/get-products");
@@ -17,4 +18,4 @@ export const getDestacados = async () => {
     console.log(error);
     return error;
   }
-};
+}; 

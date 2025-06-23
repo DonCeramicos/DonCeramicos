@@ -1,17 +1,19 @@
-// app/detailItem/[id]/page.tsx
-
 import type { Metadata } from "next";
 import ProductDetail from "./productDetail";
 import { ICeramicos } from "@/context/context";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 
-export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const id = params.id
-  const res = await fetch("http://127.0.0.1:3000/api/get-products", {
+
+export async function generateMetadata(
+  { params }: any
+): Promise<Metadata> {
+  const id = params.id;
+  const res = await fetch(`${baseUrl}/api/get-products`, {
     cache: "no-store",
   });
- 
+
   const allProducts: ICeramicos[] = await res.json();
   const product = allProducts.find((p) => p.id === id);
 
@@ -41,6 +43,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   };
 }
 
-export default function Page({ params }: { params: { id: string } }) {
-  return <ProductDetail id={params.id} />;
+export default function Page(props:any) {
+  return <ProductDetail id={props.params.id} />;
 }

@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useContext } from "react";
 import { ContextApp, Idestacadas, ICeramicos } from "@/context/context";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
  
-export default function ProductDetailPage({ id }: { id: string }) {
+export default function ProductDetail({ id }: { id: string }) {
 
   const [selectedImage, setSelectedImage] = useState<string>("");
   const [itemDetail, setItemDetail] = useState<ICeramicos | Idestacadas>();
