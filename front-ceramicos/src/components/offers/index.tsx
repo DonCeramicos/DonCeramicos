@@ -18,7 +18,6 @@ export const Offers = () => {
     router.push(`/detailItem/${id}`);
   };
 
-  // Mensaje en vivo cuando cambia la página
   const [liveMessage, setLiveMessage] = useState("");
   useEffect(() => {
     setLiveMessage(`Mostrando página ${currentPage} de ${totalPages}`);
@@ -28,26 +27,26 @@ export const Offers = () => {
     <section
       id="ofertas"
       aria-label="Sección de productos en oferta"
-      className="scroll-mt-24 flex flex-col items-center justify-center min-h-[100vh] md:min-h-[90vh] py-4 px-2"
+      className="scroll-mt-[-4rem] md:scroll-mt-20 flex flex-col items-center justify-start min-h-[100vh] px-2 md:pt-6 "
     >
-      <div className="flex items-center justify-between w-[90%] z-10">
+      {/* Título y paginado */}
+      <div className="flex flex-col md:flex-row flex-wrap items-center justify-between w-full max-w-7xl gap-4 mb-2">
         <h1
           aria-label="Ofertas mensuales"
-          className="text-[2.4rem] font-rancho font-light text-left text-white relative inline-block"
+          className="text-[1.5rem] font-phudu color-font-3 font-light"
         >
           Ofertas Mensuales
         </h1>
 
-        {/* Paginado */}
         <nav
           aria-label="Paginación de productos en oferta"
-          className="flex gap-[2px]"
+          className="flex flex-wrap justify-center items-center gap-[4px]"
         >
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`p-3 w-5 h-5 rounded-xs text-white transition duration-200 flex justify-center items-center hover:cursor-pointer ${
+              className={`p-2 w-6 h-6 rounded-xs text-white text-sm text-center flex items-center justify-center ${
                 page === currentPage
                   ? "bg-btn-paginado-selected shadow-lg color-font scale-105"
                   : "bg-btn-paginado hover:bg-stone-500"
@@ -61,18 +60,15 @@ export const Offers = () => {
         </nav>
       </div>
 
-      {/* Live region para lectores de pantalla */}
-      <div
-        aria-live="polite"
-        className="sr-only"
-      >
+      {/* Lectores de pantalla */}
+      <div aria-live="polite" className="sr-only">
         {liveMessage}
       </div>
 
-      {/* Productos en oferta */}
+      {/* Lista de productos en oferta */}
       <section
         aria-label="Lista de productos con descuento"
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 overflow-y-auto h-[34rem] w-full max-w-[70rem] px-4 mt-4  backdrop-blur-sm rounded-md shadow-2xl shadow-[#0000008a]"
+        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-1 overflow-y-auto mt-4 max-h-[63vh] md:h-[80vh] w-full max-w-7xl px-2 md:px-6 md:items-start md:justify-center"
       >
         {currentItems.map((ceramico: ICeramicos) => (
           <Product_Card

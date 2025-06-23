@@ -158,209 +158,170 @@ const validateForm = (form: IForm): Ierror => {
   };
 
   return (
-    <section
-      id="contacto"
-      className="flex flex-col h-[97vh] md:h-[100vh]  pt-20 bg-gradient-to-b from-[#000000] via-[#292929db] to-[#272727] relative"
+<section
+  id="contacto"
+  className="flex flex-col bg-gradient-to-b from-[#000000] via-[#292929db] to-[#272727] pt-20 relative scroll-mt-[-6rem] md:scroll-mt-0"
+>
+  <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#000000,transparent)]">
+    <div
+      className="bg-cover bg-no-repeat bg-left mask-custom"
+      style={{ backgroundImage: "url(/background-contact.jpg)" }}
+    ></div>
+  </div>
+
+
+
+  {/* CONTENIDO RESPONSIVE */}
+  <div className="flex flex-col gap-10 px-4 md:px-10 lg:px-20">
+
+    {/* FORMULARIO */}
+    <form
+      aria-label="Formulario de contacto para Don Cerámicos"
+      onSubmit={handleSubmit}
+      className="flex flex-col justify-center h-[92vh] md:h-[88vh] w-full max-w-[700px] mx-auto p-6 font-phudu bg-gradient-to-b from-transparent via-[#373737e2] to-[#524c385e] rounded-md gap-2 shadow-md"
     >
-      <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#000000,transparent)]">
-        <div
-          className="bg-cover bg-no-repeat  bg-left  mask-custom"
-          style={{ backgroundImage: "url(/background-contact.jpg)" }}
-        ></div>
-      </div>
-      <h1 className="font-rancho font-light color-font-2 text-left md:mx-18 text-[2.4rem]">
-        <span className="sr-only">seccion con formulario de contacto y mapa interactivo</span>
-        Contactanos
-      </h1>
+      {/* NOMBRE */}
+      <label className="color-font-2" htmlFor="name">NOMBRE</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        value={form.name}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        className="p-2 bg-[#dcd0c0] rounded text-black"
+      />
+      {touched.name && errors.name && <p role="alert" className="text-red-400">{errors.name}</p>}
 
-      <section className="flex justify-evenly items-center ">
-        <form
-          aria-label="Formulario de contacto mediante correo electronico de don ceramicos"
-          onSubmit={handleSubmit}
-          className="flex flex-col h-[30rem] w-[30rem] p-2 font-phudu bg-gradient-to-b from-transparent via-[#373737e2] to-[#524c385e] rounded-md gap-2 "
+      {/* APELLIDO */}
+      <label className="color-font-2" htmlFor="surname">APELLIDO</label>
+      <input
+        id="surname"
+        name="surname"
+        type="text"
+        value={form.surname}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        className="p-2 bg-[#dcd0c0] rounded text-black"
+      />
+      {touched.surname && errors.surname && <p role="alert" className="text-red-400">{errors.surname}</p>}
+
+      {/* TELÉFONO */}
+      <label className="color-font-2" htmlFor="phone">TELÉFONO</label>
+      <input
+        id="phone"
+        name="phone"
+        type="text"
+        value={form.phone}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        className="p-2 bg-[#dcd0c0] rounded text-black"
+      />
+      {touched.phone && errors.phone && <p role="alert" className="text-red-400">{errors.phone}</p>}
+
+      {/* EMAIL */}
+      <label className="color-font-2" htmlFor="email">EMAIL</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        value={form.email}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        className="p-2 bg-[#dcd0c0] rounded text-black"
+      />
+      {touched.email && errors.email && <p role="alert" className="text-red-400">{errors.email}</p>}
+
+      {/* MENSAJE */}
+      <label className="color-font-2" htmlFor="message">MENSAJE</label>
+      <textarea
+        id="message"
+        name="message"
+        rows={4}
+        value={form.message}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        className="p-2 bg-[#dcd0c0] rounded text-black"
+      />
+      {touched.message && errors.message && <p role="alert" className="text-red-400">{errors.message}</p>}
+
+      <button
+        type="submit"
+        className="btn41-43 btn-42 mt-4 text-[16px] font-phudu tracking-widest"
+      >
+        Enviar
+      </button>
+    </form>
+
+    {/* GRID MAPA + REDES */}
+    <div
+      className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-[1200px] mx-auto text-center font-phudu"
+      role="region"
+      aria-label="Sección con mapa, redes sociales y datos de contacto"
+    >
+      {/* MAPA Y DIRECCIÓN */}
+      <div className="flex flex-col items-center gap-4">
+        <h2 className="text-xl md:text-2xl color-font-2">Encontranos en</h2>
+        <a
+          href="https://maps.app.goo.gl/YuBqy4cyh26zL5bJA"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline color-font-3"
         >
-          <label className="color-font-2" htmlFor="name">
-            NOMBRE
-          </label>
-          <div className="flex gap-1">
-            <input
-              id="name"
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className="p-1 bg-[#dcd0c0] rounded w-[15rem]  text-black"
-            />
-            {touched.name && errors.name && (
-              <p role="alert" className="text-red-400">{errors.name}</p>
-            )}
+          <h3 className="font-bold">J. Hernández 4490 esq. S. Liniers, Claypole, PBA</h3>
+          <h3 className="font-bold">a 100 mts de la Estación Claypole</h3>
+        </a>
+        <div className="relative group w-full max-w-[450px] h-[300px] md:h-[400px] rounded overflow-hidden">
+          <iframe
+            title="Ubicación de Don Cerámicos en Google Maps"
+            className="w-full h-full pointer-events-none group-hover:pointer-events-auto"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d204.75964725243506!2d-58.33918134717725!3d-34.802058285409!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32df17dc5fe73%3A0xbfbdb30ba7daca91!2sDon%20cer%C3%A1micos!5e0!3m2!1ses-419!2sar!4v1749953363088!5m2!1ses-419!2sar"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      {/* REDES Y CONTACTO */}
+      <div className="flex flex-col items-center justify-center gap-6">
+        <div>
+          <h3 className="text-xl md:text-2xl font-phudu color-font-2">Redes</h3>
+          <div className="flex justify-center items-center gap-4 mt-2">
+            <a
+              href="https://www.facebook.com/p/Don-cer%C3%A1micos-100068413961241"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/facebook-color.png" alt="facebook" className="h-10 w-10 hover:scale-110 transition" />
+            </a>
+            <a
+              href="https://www.instagram.com/reel/DCCDuEYOjtj/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/instagram-color.png" alt="instagram" className="h-10 w-10 hover:scale-110 transition" />
+            </a>
+            <a
+              href="https://wa.me/+5491128254000?text=Hola!%20Quiero%20hacer%20una%20consulta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/whatsapp-button.png" alt="whatsapp" className="h-10 w-10 hover:scale-110 transition" />
+            </a>
           </div>
+        </div>
 
-          <label className="color-font-2" htmlFor="surname">
-            APELLIDO
-          </label>
-          <div className="flex gap-1">
-            <input
-              id="surname"
-              type="text"
-              name="surname"
-              value={form.surname}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className="p-1 bg-[#dcd0c0] rounded w-[15rem] text-black"
-            />
-            {touched.surname && errors.surname && (
-              <p role="alert" className="text-red-400">{errors.surname}</p>
-            )}
-          </div>
+        <div className="text-sm color-font-2 text-center">
+          <p><a href="tel:+5491123456789">📞 11-2345-6789</a></p>
+          <p><a href="mailto:donceramicos.info@gmail.com">📧 donceramicos.info@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <label className="color-font-2" htmlFor="phone">
-            TELÉFONO
-          </label>
-          <div className="flex gap-1">
-            <input
-              id="phone"
-              type="text"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className="p-1 bg-[#dcd0c0]  text-black rounded w-[15rem]"
-            />
-            {touched.phone && errors.phone && (
-              <p  role="alert" className="text-red-400">{errors.phone}</p>
-            )}
-          </div>
 
-          <label className="color-font-2" htmlFor="email">
-            EMAIL
-          </label>
-          <div className="flex gap-1">
-            <input
-              id="email"
-              type="text"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className="p-1 bg-[#dcd0c0] text-black rounded w-[15rem]"
-            />
-            {touched.email && errors.email && (
-              <p  role="alert"  className="text-red-400">{errors.email}</p>
-            )}
-          </div>
-          <div className="flex flex-col gap-1">
-            <div className="flex justify-between">
-              <label className="color-font-2" htmlFor="message">
-                MENSAJE
-              </label>
-              {touched.message && errors.message && (
-                <p role="alert" className="text-red-400">{errors.message}</p>
-              )}
-            </div>
-            <textarea
-              id="message"
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              rows={4}
-              cols={30}
-              className="p-1 bg-[#dcd0c0] text-black rounded"
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn41-43 btn-42 translate-x-30 text-[16px] font-rancho tracking-widest"
-          >
-            Enviar
-          </button>
-        </form>
-        {/* DIRECCION */}
-        <section className=" flex flex-col items-center justify-center md:h-[30rem] gap-4 font-poiret-one font-extrabold text-[14px] px-4 text-center ">
-          {/* Título */}
-          <span className="sr-only"> seccion con redes sociales y mapa interactivo</span>
-          <h2
-          aria-label="subtitulo que dice: Encontranos en"
-           className="text-4xl font-rancho color-font-2">Encontranos en</h2>
-
-          {/* Dirección */}
-          <a
-            aria-label="link que lleva a google maps con la direccion de la tienda Don Ceramicos"
-            href="https://maps.app.goo.gl/YuBqy4cyh26zL5bJA"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline color-font-3"
-          >
-            <h3 aria-label="direccion de la tienda Don Ceramicos: J Hernández 4490 esq. S. Liniers, Claypole, PBA" className="font-phudu font-bold">J. Hernández 4490 esq. S. Liniers, Claypole, PBA</h3>
-            <h3 aria-label="indicacion extra : a 100 mts de la Estación Claypole" className="font-phudu font-bold">a 100 mts de la Estación Claypole</h3>
-          </a>
-
-          {/* Mapa */}
-          <div className="relative group w-full max-w-[450px] h-[300px] md:h-[400px] rounded overflow-hidden">
-            <iframe
-              title="mapa de google maps con la direccion de la tienda Don Ceramicos"
-              aria-label="mapa de google maps con la direccion de la tienda Don Ceramicos"
-              className="w-full h-full pointer-events-none group-hover:pointer-events-auto"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d204.75964725243506!2d-58.33918134717725!3d-34.802058285409!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32df17dc5fe73%3A0xbfbdb30ba7daca91!2sDon%20cer%C3%A1micos!5e0!3m2!1ses-419!2sar!4v1749953363088!5m2!1ses-419!2sar"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-
-          {/* Redes */}
-          <aside aria-label="seccion con redes sociales: facebook, instagram y whatsapp" className="flex flex-col items-center justify-center gap-2 mt-4">
-            <h3 className="text-2xl font-rancho color-font-2">Redes</h3>
-            <div className="flex justify-center items-center gap-4">
-              <a
-                aria-label="link que lleva a facebook de la tienda Don Ceramicos"
-                href="https://www.facebook.com/p/Don-cer%C3%A1micos-100068413961241"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/facebook-color.png"
-                  alt="logo de facebook don ceramicos"
-                  className="h-10 w-10 hover:scale-110 transition"
-                />
-              </a>
-              <a
-                href="https://www.instagram.com/reel/DCCDuEYOjtj/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="link que lleva a instagram de la tienda Don Ceramicos"
-              >
-                <img
-                  src="/instagram-color.png"
-                  alt="logo de instagram don ceramicos"
-                  className="h-10 w-10 hover:scale-110 transition"
-                />
-              </a>
-              <a
-                aria-label="link que lleva al chat con whatsapp de la tienda Don Ceramicos"
-                href="https://wa.me/+5491128254000?text=Hola!%20Quiero%20hacer%20una%20consulta"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/whatsapp-button.png"
-                  alt="logo de whatsapp que lleva al chat de la tienda Don Ceramicos"
-                  className="h-10 w-10 hover:scale-110 transition"
-                />
-              </a>
-            </div>
-          </aside>
-
-          {/* Contacto */}
-          <aside aria-label="seccion con contacto: telefono y correo electronico" className="flex justify-center items-center gap-3 color-font-2 text-sm mt-2 flex-wrap">
-            <a href="tel:+5491123456789" aria-label="telefono de la tienda Don Ceramicos: 11-2345-6789">11-2345-6789</a>
-            <a href="mailto:donceramicos.info@gmail.com" aria-label="correo electronico de la tienda Don Ceramicos: donceramicos.info@gmail.com">donceramicos.info@gmail.com</a>
-          </aside>
-        </section>
-      </section>
-    </section>
   );
 };
 

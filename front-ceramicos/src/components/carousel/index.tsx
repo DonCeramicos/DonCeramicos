@@ -1,4 +1,56 @@
 "use client";
+import { useContext } from "react";
+import { ContextApp, Idestacadas } from "../../context/context";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+export const Carousel = () => {
+  const { destacadas } = useContext(ContextApp);
+  const router = useRouter();
+
+  const handleDetail = (id: string) => {
+    router.push(`/detailItem/${id}`);
+  };
+
+  if (!destacadas || destacadas.length === 0) return <p>No hay destacadas.</p>;
+
+  // Duplicamos para efecto de loop
+  const loopItems = destacadas.concat(destacadas);
+
+  return (
+    <section
+      className="w-full h-[12rem] overflow-hidden relative bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] md:top-44.5 top-7 flex items-center shadow-lg"
+      aria-label="Cinta deslizante con productos destacados"
+    >
+      <ul className="flex w-max animate-scrollBanner hover:[animation-play-state:paused]">
+        {loopItems.map((item: Idestacadas, i) => (
+          <li
+            key={i}
+            onClick={() => handleDetail(item.id)}
+            className="w-[250px] h-[150px] flex-shrink-0 relative mx-2 cursor-pointer"
+          >
+            <Image
+              src={item.imagen[2]}
+              width={500}
+              height={500}
+              alt={`Imagen del producto ${item.nombre} con ${item.oferta}% de descuento`}
+              className="object-cover h-full w-full rounded"
+            />
+            <div className="absolute top-0 left-0 overflow-hidden w-[76px] h-[76px]">
+              <div className="bg-red-600 text-white text-[10px] font-bold rotate-[-45deg] w-[100px] text-center absolute top-3 left-[-30px] z-50">
+                -{item.oferta}%
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+};
+
+{/*
+  PRIMER VERSION
+  "use client";
 import { useState, useEffect, useContext } from "react";
 import { ContextApp, Idestacadas } from "../../context/context";
 import { useRouter } from "next/navigation";
@@ -31,9 +83,8 @@ export const Carousel = () => {
   if (!destacadas || destacadas.length === 0) return <p>No hay destacadas.</p>;
 
   return (
-    <section className="w-full h-[12rem] bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] bottom-0 absolute flex flex-col items-center md:items-center md:justify-center gap-2 p-1 rounded-xs shadow-lg ">
+    <section className="w-full h-[12rem] bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] bottom-0 absolute flex flex-col items-center md:items-center md:justify-center p-1 rounded-xs shadow-lg ">
       <span className="sr-only"> carrusel de ofertas destacadas</span>
-      <p className="md:hidden font-rancho text-[#101010] text-3xl">Ofertas Destacadas</p>
       <section className="relative w-[250px] h-[150px] overflow-hidden rounded ">
         <article
           className="flex transition-transform duration-500 ease-in-out"
@@ -107,3 +158,4 @@ export const Carousel = () => {
     </section>
   );
 };
+*/}

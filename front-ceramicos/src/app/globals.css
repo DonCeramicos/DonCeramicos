@@ -209,7 +209,6 @@ body {
 
 .btn41-43 {
   padding: 1px 5px;
-  font-weight: 500;
   width: 100px;
   height: 50px;
   border: none;
@@ -220,7 +219,7 @@ body {
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  font-family: rancho;
+  font-family: phudu;
   font-size: 20px;
   background-color: rgb(230, 168, 86);
 }
@@ -281,4 +280,44 @@ body {
   .animate-fadeIn {
     animation: fadeIn 0.4s ease-in-out forwards;
   }
+}
+@keyframes scrollBanner {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scrollBanner {
+  animation: scrollBanner 40s linear infinite;
+}
+
+@keyframes scrollBanner {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scrollBanner {
+  animation: scrollBanner 40s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
 }

@@ -12,15 +12,15 @@ export default function Catalogo() {
         description={ `Descubrí nuestra amplia variedad de cerámicos para pisos y paredes, con calidad premium y diseños exclusivos.`}
         canonicalUrl={`https://donceramicos.com/catalogo`}
       />
-      <main className="w-full ">
+      <main className="w-full border-none">
         {/* Sección 1: Productos */}
         <span className="sr-only">
           Catalogo de productos y ofertas de ceramicos del comercio: Don
           Ceramicos
         </span>
         <section
-          className="h-[90.5vh] scroll-mt-3 bg-gradient-to-b from-[#000000d9] to-transparent "
-          id="productos"
+          className="scroll-mt-24 bg-gradient-to-b from-[#000000d9] to-transparent "
+          id="catalogo"
         >
           {/* Fondo degradado con imagen y máscara */}
           <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#373737,transparent)]">
@@ -34,8 +34,8 @@ export default function Catalogo() {
         </section>
 
         {/* Sección intermedia: subtítulo y parrafo */}
-        <section className="relative z-10 h-[60vh] bg-gradient-to-b from-[#ffffff] via-[#1a1810cf] to-[#000000] flex flex-col items-center justify-center gap-4 text-white">
-          <h2 className="text-4xl font-poiret-one font-extrabold text-center color-font-4">
+        <section className="relative  h-[60vh] bg-gradient-to-b from-[#ffffff] via-[#1a1810cf] to-[#000000] flex flex-col font-phudu items-center justify-center gap-4 text-white">
+          <h2 className="text-4xl font-poiret-one font-extrabold text-center text-[#1d1d1c]">
             Mirá nuestras ofertas más destacadas
           </h2>
           <p className="md:text-base text-center max-w-[40rem] color-font-3 leading-relaxed">
@@ -48,8 +48,7 @@ export default function Catalogo() {
 
         {/* Sección 2: Ofertas */}
         <section
-          className=" h-[95vh] scroll-mt-16 pt-3 relative bg-gradient-to-b from-[#000000] via-[#000000] to-[#000000] "
-          id="ofertas"
+          className="  pt-3 relative bg-gradient-to-b from-[#000000] via-[#000000] to-[#000000] "
         >
           {/* Fondo degradado con imagen y máscara */}
 

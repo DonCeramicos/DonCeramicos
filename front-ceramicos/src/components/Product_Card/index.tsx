@@ -1,6 +1,8 @@
 "use client";
 import { ICeramicos } from "@/context/context";
 import Image from "next/image";
+import { Eye, EyeClosed } from "lucide-react";
+import { useState } from "react";
 
 type ProductCardProps = {
   ceramico: ICeramicos;
@@ -13,6 +15,8 @@ export const Product_Card = ({
   isInOffersSection = false,
   onClick,
 }: ProductCardProps) => {
+  const [hovered, setHovered] = useState(false);
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
       onClick?.();
@@ -21,11 +25,13 @@ export const Product_Card = ({
 
   return (
     <article
-      className="relative h-[270px] w-[170px] rounded-lg p-2 bg-[#3e3e3ed1] flex flex-col items-center shadow-md hover:shadow-lg transition-shadow duration-300"
+      className="relative h-[270px] w-[170px] rounded-lg p-2 bg-[#1a19197b] flex flex-col items-center shadow-md hover:shadow-lg transition-shadow duration-300"
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
       onClick={onClick}
       onKeyDown={onClick ? handleKeyDown : undefined}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       aria-label={`Producto: ${ceramico.nombre}, precio $${ceramico.valor}`}
     >
       {/* Badge de oferta */}
@@ -49,43 +55,38 @@ export const Product_Card = ({
       />
 
       {/* Detalles */}
-      <div className="p-1 flex flex-col items-start text-[13px] w-full text-[#c0b283] font-phudu mt-2 tracking-wide">
+      <div className="p-1 flex flex-col items-center text-[13px] w-full text-[#c0b283] font-phudu mt-2 tracking-wide">
         <p className="color-font-2">{ceramico.nombre}</p>
         <p className="text-sm">${ceramico.valor}</p>
       </div>
 
-      {/* Botón ícono de ojo */}
-      {onClick && (
-        <button
-          aria-label={`Ver detalles del producto ${ceramico.nombre}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            onClick();
-          }}
-          className="absolute bottom-1 bg-[#c0b283] p-1 rounded transition duration-300 hover:cursor-pointer hover:bg-[#837e6c]"
-        >
-          {/* Ícono SVG del ojo */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5 text-[#1a1a1a]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-            />
-          </svg>
-        </button>
-      )}
+     {/* Botón con transición de íconos */}
+{onClick && (
+  <button
+    aria-label={`Ver detalles del producto ${ceramico.nombre}`}
+    onClick={(e) => {
+      e.stopPropagation();
+      onClick();
+    }}
+    className="p-1 w-10 h-10 rounded flex items-center justify-center relative overflow-hidden transition-colors duration-300"
+  >
+    {/* Ícono OJO CERRADO */}
+    <EyeClosed
+      className={`w-5 h-5 text-[#000000] absolute transition-all duration-300 ${
+        hovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
+      }`}
+    />
+
+    {/* Ícono OJO ABIERTO */}
+    <Eye
+      className={`w-5 h-5 text-[#1a1a1a] absolute transition-all duration-300 ${
+        hovered ? "opacity-100 scale-100" : "opacity-0 scale-105"
+      }`}
+    />
+  </button>
+)}
+
+
     </article>
   );
 };
