@@ -59,7 +59,28 @@ body {
   -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
 }
 
+
 /*TIPOFRAGIAS*/
+.bruno-ace {
+  font-family: "Bruno Ace SC", sans-serif;
+}
+.ranchers-regular {
+  font-family: "Ranchers", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.viaoda-libre {
+  font-family: "Viaoda Libre", sans-serif;
+}
+
+.spectral-sc {
+  font-family: "Spectral SC", serif;
+}
+.tinos{
+  font-family: "Tinos", serif;
+}
+
 .font-phudu {
   font-family: "Phudu", cursive;
 }
@@ -72,6 +93,8 @@ body {
 .font-poiret-one {
   font-family: "Poiret One", cursive;
 }
+.prosto{
+  font-family: "Prosto One", cursive;}
 
 /*ANIMACION PARA EL BOTON DE CONTACTO*/
 @keyframes personal-bounce {

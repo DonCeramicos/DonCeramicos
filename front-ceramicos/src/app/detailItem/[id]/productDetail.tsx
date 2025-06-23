@@ -69,10 +69,10 @@ export default function ProductDetailPage() {
         <section className="flex flex-col md:flex-row items-center justify-center gap-4 mt-12">
           {/* Miniaturas imagenes */}
           <section className="flex flex-row md:flex-col items-center justify-center h-auto md:h-[60vh] max-h-[200px] md:max-h-none overflow-x-auto md:overflow-y-auto scroll-hidden rounded p-1 gap-1">
-            {itemDetail.imagen.map((imagen, index) => (
-              <article key={index} onClick={() => handleImageClick(imagen)}>
+            {itemDetail.imagen.map((img, index) => (
+              <article key={index} onClick={() => handleImageClick(img)}>
                 <img
-                  src={imagen}
+                  src={img}
                   alt={`Imagen miniatura del producto ${itemDetail.nombre}`}
                   className="h-20 w-20 object-cover hover:cursor-pointer rounded-xs hover:opacity-50 transition duration-500"
                 />
@@ -93,12 +93,12 @@ export default function ProductDetailPage() {
 
               {selectedImage && (
                 <Image
-                  key={selectedImage}
+                  key={selectedImage} // Esto reinicia la animación al cambiar la imagen
                   src={selectedImage}
                   alt="Vista previa"
                   width={300}
                   height={300}
-                  className="object-cover rounded absolute bottom-4 left-4 w-[120px] h-[120px] md:w-[150px] md:h-[150px] shadow-lg border-2 transition-all duration-500 opacity-0 scale-95 animate-fadeIn"
+                  className="object-cover rounded absolute bottom-4 left-4 w-[120px] h-[120px] md:w-[150px] md:h-[150px] shadow-lg border-2 animate-fadeIn"
                 />
               )}
             </div>
@@ -150,7 +150,8 @@ export default function ProductDetailPage() {
                 {/* Precio y miniaturas */}
                 <article className="col-span-2 flex flex-col items-center gap-2 w-full">
                   <p className="uppercase bg-[#46402cd7] p-1 rounded">
-                    <span className="color-font-2">Precio: </span>${itemDetail.valor}
+                    <span className="color-font-2">Precio: </span>$
+                    {itemDetail.valor}
                   </p>
                   <div className="flex gap-2 overflow-x-auto scroll-hidden">
                     {itemDetail.imagen.map((img, index) => (

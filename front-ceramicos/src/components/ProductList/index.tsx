@@ -5,7 +5,7 @@ import { ContextApp, ICeramicos } from "../../context/context";
 import { Product_Card } from "../Product_Card";
 import { useRouter } from "next/navigation";
 
-export const ProductList = () => {
+export const ProductList = () => { 
   const { ceramicos } = useContext(ContextApp);
   const [searchData, setSearchData] = useState<ICeramicos[]>([]);
   const [categoria, setCategoria] = useState<ICeramicos[]>([]);
@@ -67,7 +67,7 @@ export const ProductList = () => {
       <section
         aria-label="Sección de productos"
         id="catalogo"
-        className="scroll-mt-24 flex flex-col justify-start items-center  h-auto min-h-screen px-2 "
+        className="scroll-mt-[8rem] md:scroll-mt-20 flex flex-col justify-start items-center  h-auto min-h-screen px-2 "
       >
         {/* Header + paginado */}
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-4 mb-2">

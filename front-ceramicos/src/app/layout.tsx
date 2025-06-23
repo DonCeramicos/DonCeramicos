@@ -13,6 +13,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import "./globals.css";
 import WhatsAppFloatingButton from "@/components/whatsApp-Button";
+import FontLoader from "@/components/fontProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,12 +60,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (  
+  return (
     <html lang="en">
       <Context>
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${porietOne.variable}  ${phudu.variable} ${rancho.variable} ${philosopher.variable} antialiased`}
         >
+
           <Navbar />
           {children}
           <Toaster

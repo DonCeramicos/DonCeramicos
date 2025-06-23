@@ -19,8 +19,7 @@ export default function Catalogo() {
           Ceramicos
         </span>
         <section
-          className="scroll-mt-24 bg-gradient-to-b from-[#000000d9] to-transparent "
-          id="catalogo"
+          className="bg-gradient-to-b from-[#000000d9] to-transparent "
         >
           {/* Fondo degradado con imagen y máscara */}
           <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#373737,transparent)]">
