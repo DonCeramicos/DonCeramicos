@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   const res = await fetch("http://127.0.0.1:3000/api/get-products", {
     cache: "no-store",
   });
-
+ 
   const allProducts: ICeramicos[] = await res.json();
   const product = allProducts.find((p) => p.id === id);
 
@@ -41,6 +41,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   };
 }
 
-export default function Page() {
-  return <ProductDetail />;
+export default function Page({ params }: { params: { id: string } }) {
+  return <ProductDetail id={params.id} />;
 }
