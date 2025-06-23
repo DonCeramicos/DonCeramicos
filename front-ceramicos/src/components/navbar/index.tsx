@@ -81,18 +81,18 @@ export const Navbar = () => {
         role="dialog"
         aria-modal="true"
       >
-        <a aria-label="Ir al inicio" href="/#home" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+        <Link aria-label="Ir al inicio" href="/#home" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
           INICIO
-        </a>
-        <a aria-label="Ir al catálogo" href="/catalogo/#catalogo" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+        </Link>
+        <Link aria-label="Ir al catálogo" href="/catalogo/#catalogo" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
           CATALOGO
-        </a>
-        <a aria-label="Ir a las ofertas" href="/catalogo/#ofertas" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+        </Link>
+        <Link aria-label="Ir a las ofertas" href="/catalogo/#ofertas" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
           OFERTAS
-        </a>
-        <a aria-label="Ir al contacto" href="/#contacto" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
+        </Link>
+        <Link aria-label="Ir al contacto" href="/#contacto" onClick={toggleMenu} className="hover:scale-105 transition-all duration-300">
           CONTACTO
-        </a>
+        </Link>
       </div>
     </nav>
   );

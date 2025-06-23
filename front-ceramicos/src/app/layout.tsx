@@ -13,7 +13,6 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import "./globals.css";
 import WhatsAppFloatingButton from "@/components/whatsApp-Button";
-import FontLoader from "@/components/fontProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
