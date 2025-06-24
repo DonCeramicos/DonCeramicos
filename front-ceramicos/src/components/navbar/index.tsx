@@ -38,7 +38,7 @@ export const Navbar = () => {
       </Link>
 
       {/* Navegación Desktop */}
-      <ul className="hidden md:flex gap-6 font-rancho tracking-wider text-[20px] color-font-2">
+      <ul className="hidden md:flex gap-6 megolan tracking-widest text-[15px] color-font-2">
         <li>
           <Link aria-label="Ir al inicio" href="/#home" className="hover:scale-105 transition-all duration-300">Inicio</Link>
         </li>
@@ -74,7 +74,7 @@ export const Navbar = () => {
       {/* Overlay + Menú Mobile con animación */}
       <div
         className={`
-          fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 text-[#373737] text-2xl font-phudu
+          fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 text-[#373737] text-2xl megolan
           transition-all duration-500 ease-in-out
           ${isOpen ? "opacity-100 translate-y-0 pointer-events-auto bg-[#c0b283]/95" : "opacity-0 -translate-y-10 pointer-events-none"}
         `}

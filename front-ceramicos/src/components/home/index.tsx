@@ -4,7 +4,7 @@ export const HomeComponent = () => {
   return (
     <section
       id="home"
-      className="h-[92vh] md:h-[92.5vh] relative flex flex-col scroll-mt-24 bg-gradient-to-b from-[#000000d9] to-transparent"
+      className="h-[92vh] md:h-[90vh] relative flex flex-col scroll-mt-24 bg-gradient-to-b from-[#000000d9] to-transparent"
     >
       <span className="sr-only">Seccion Principal de la pagina</span>
       {/* Fondo degradado con imagen */}
@@ -17,7 +17,7 @@ export const HomeComponent = () => {
       {/* Contenido por encima del fondo de imagen */}
       <section className="relative z-30 flex flex-col items-center h-full ">
         <span className="sr-only">Título: Don ceramicos</span>
-        <h1 className="font-rancho text-6xl w-[24rem] md:text-[8rem] md:w-[47.5rem] text-center mx-auto md:mt-[4rem] mt-[12rem] text-[#0f0f0f] md:color-font ">
+        <h1 className="megolan text-6xl w-[24rem] md:text-[8rem] md:w-[47.5rem] text-center mx-auto md:mt-[4rem] mt-[12rem] text-[#1b1b1b] md:color-font ">
           Don Ceramicos
         </h1>
         <h2

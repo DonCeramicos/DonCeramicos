@@ -35,7 +35,7 @@ export default function Catalogo() {
         {/* Sección intermedia: subtítulo y parrafo */}
         <section className="relative  h-[60vh] bg-gradient-to-b from-[#ffffff] via-[#1a1810cf] to-[#000000] flex flex-col font-phudu items-center justify-center gap-4 text-white">
           <h2 className="text-4xl font-poiret-one font-extrabold text-center text-[#1d1d1c]">
-            Mirá nuestras ofertas más destacadas
+            Mirá nuestras ofertas destacadas
           </h2>
           <p className="md:text-base text-center max-w-[40rem] color-font-3 leading-relaxed">
             Ofrecemos cerámicos de alta calidad con precios irresistibles.{" "}

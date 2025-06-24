@@ -19,7 +19,7 @@ export const Carousel = () => {
 
   return (
     <section
-      className="w-full h-[12rem] overflow-hidden relative bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] md:top-44.5 top-7 flex items-center shadow-lg"
+      className="w-full h-[12rem] overflow-hidden relative bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] md:top-29.5 top-7 flex items-center shadow-lg"
       aria-label="Cinta deslizante con productos destacados"
     >
       <ul className="flex w-max animate-scrollBanner hover:[animation-play-state:paused]">

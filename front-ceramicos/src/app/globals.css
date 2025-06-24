@@ -59,6 +59,32 @@ body {
   -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
 }
 
+@font-face {
+    font-family: 'Infinite Realities';
+    src: url('/fonts/InfiniteRealities.woff2') format('woff2'),
+        url('/fonts/InfiniteRealities.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Megolan';
+    src: url('/fonts/Megolan.woff2') format('woff2'),
+        url('/fonts/Megolan.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.megolan {
+    font-family: 'Megolan', sans-serif;
+}
+
+.infinite-realities {
+    font-family: 'Infinite Realities', sans-serif;
+}
 
 /*TIPOFRAGIAS*/
 .bruno-ace {
