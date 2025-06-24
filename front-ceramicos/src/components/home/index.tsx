@@ -4,7 +4,7 @@ export const HomeComponent = () => {
   return (
     <section
       id="home"
-      className="h-[92vh] md:h-[90vh] relative flex flex-col scroll-mt-24 bg-gradient-to-b from-[#000000d9] to-transparent"
+      className="h-[92vh] md:h-[91vh] relative flex flex-col scroll-mt-24 bg-gradient-to-b from-[#000000d9] to-transparent"
     >
       <span className="sr-only">Seccion Principal de la pagina</span>
       {/* Fondo degradado con imagen */}
