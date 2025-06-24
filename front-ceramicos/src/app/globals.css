@@ -59,6 +59,13 @@ body {
   -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
 }
 
+.texto-con-borde {
+  font-size: 5rem;
+  color: rgb(222, 222, 222);
+  -webkit-text-stroke: 2px rgb(97, 72, 4); 
+}
+
+
 @font-face {
     font-family: 'Infinite Realities';
     src: url('/fonts/InfiniteRealities.woff2') format('woff2'),

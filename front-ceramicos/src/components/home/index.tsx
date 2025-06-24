@@ -17,7 +17,7 @@ export const HomeComponent = () => {
       {/* Contenido por encima del fondo de imagen */}
       <section className="relative z-30 flex flex-col items-center h-full ">
         <span className="sr-only">Título: Don ceramicos</span>
-        <h1 className="megolan text-6xl w-[24rem] md:text-[8rem] md:w-[47.5rem] text-center mx-auto md:mt-[4rem] mt-[12rem] text-[#1b1b1b] md:color-font ">
+        <h1 className="texto-con-borde megolan text-6xl w-[20rem] md:text-[8rem] md:w-[47.5rem] text-center mx-auto mt-[8rem] md:mt-[4rem] text-[#1a1a1a] md:color-font ">
           Don Ceramicos
         </h1>
         <h2
