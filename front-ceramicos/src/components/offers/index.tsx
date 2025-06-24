@@ -27,7 +27,7 @@ export const Offers = () => {
     <section
       id="ofertas"
       aria-label="Sección de productos en oferta"
-      className="scroll-mt-[-4rem] md:scroll-mt-20 flex flex-col items-center justify-start min-h-[100vh] px-2 md:pt-6 "
+      className="scroll-mt-16 md:scroll-mt-20 flex flex-col items-center justify-start min-h-[100vh] px-2 md:pt-6 "
     >
       {/* Título y paginado */}
       <div className="flex flex-col md:flex-row flex-wrap items-center justify-between w-full max-w-7xl gap-4 mb-2">
