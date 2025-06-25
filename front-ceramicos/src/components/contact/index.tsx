@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import SendLoader from "../sendLoader";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface IForm {
   name: string;
@@ -54,6 +55,9 @@ export const Contact = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const [recaptcha, setRecaptcha] = useState<string | null>(null);
+
+  const siteKey = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY;
   const validateForm = (form: IForm): Ierror => {
     const newErrors: Ierror = {
       name: "",
@@ -128,7 +132,7 @@ export const Contact = () => {
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, recaptcha }),
       });
 
       if (!response.ok) throw new Error("Error en el envío del email");
@@ -169,11 +173,11 @@ export const Contact = () => {
       id="contacto"
       className="flex flex-col bg-gradient-to-b from-[#000000] via-[#292929db] to-[#272727] pt-20 relative scroll-mt-[-6rem] md:scroll-mt-0"
     >
-       { loading && (
-      <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-50">
-        <SendLoader />
-      </div>
-    )}
+      {loading && (
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-50">
+          <SendLoader />
+        </div>
+      )}
       <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#000000,transparent)]">
         <div
           className="bg-cover bg-no-repeat bg-left mask-custom"
@@ -190,8 +194,13 @@ export const Contact = () => {
           className="flex flex-col justify-center h-[92vh] md:h-[88vh] w-full max-w-[700px] mx-auto p-6 font-phudu bg-gradient-to-b from-transparent via-[#373737e2] to-[#524c385e] rounded-md gap-2 shadow-md"
         >
           {/* NOMBRE */}
-          <label className="color-font-2" htmlFor="name">
+          <label className="color-font-2 flex justify-between" htmlFor="name">
             NOMBRE
+            {touched.name && errors.name && (
+              <p role="alert" className="text-red-400">
+                {errors.name}
+              </p>
+            )}
           </label>
           <input
             id="name"
@@ -202,15 +211,18 @@ export const Contact = () => {
             onBlur={handleBlur}
             className="p-2 bg-[#dcd0c0] rounded text-black"
           />
-          {touched.name && errors.name && (
-            <p role="alert" className="text-red-400">
-              {errors.name}
-            </p>
-          )}
 
           {/* APELLIDO */}
-          <label className="color-font-2" htmlFor="surname">
+          <label
+            className="color-font-2 flex justify-between"
+            htmlFor="surname"
+          >
             APELLIDO
+            {touched.surname && errors.surname && (
+              <p role="alert" className="text-red-400">
+                {errors.surname}
+              </p>
+            )}
           </label>
           <input
             id="surname"
@@ -221,15 +233,15 @@ export const Contact = () => {
             onBlur={handleBlur}
             className="p-2 bg-[#dcd0c0] rounded text-black"
           />
-          {touched.surname && errors.surname && (
-            <p role="alert" className="text-red-400">
-              {errors.surname}
-            </p>
-          )}
 
           {/* TELÉFONO */}
-          <label className="color-font-2" htmlFor="phone">
+          <label className="color-font-2 flex justify-between" htmlFor="phone">
             TELÉFONO
+            {touched.phone && errors.phone && (
+              <p role="alert" className="text-red-400">
+                {errors.phone}
+              </p>
+            )}
           </label>
           <input
             id="phone"
@@ -240,15 +252,15 @@ export const Contact = () => {
             onBlur={handleBlur}
             className="p-2 bg-[#dcd0c0] rounded text-black"
           />
-          {touched.phone && errors.phone && (
-            <p role="alert" className="text-red-400">
-              {errors.phone}
-            </p>
-          )}
 
           {/* EMAIL */}
-          <label className="color-font-2" htmlFor="email">
+          <label className="color-font-2 flex justify-between" htmlFor="email">
             EMAIL
+            {touched.email && errors.email && (
+              <p role="alert" className="text-red-400">
+                {errors.email}
+              </p>
+            )}
           </label>
           <input
             id="email"
@@ -259,40 +271,44 @@ export const Contact = () => {
             onBlur={handleBlur}
             className="p-2 bg-[#dcd0c0] rounded text-black"
           />
-          {touched.email && errors.email && (
-            <p role="alert" className="text-red-400">
-              {errors.email}
-            </p>
-          )}
 
           {/* MENSAJE */}
-          <label className="color-font-2" htmlFor="message">
+          <label
+            className="color-font-2 flex justify-between"
+            htmlFor="message"
+          >
             MENSAJE
+            {touched.message && errors.message && (
+              <p role="alert" className="text-red-400">
+                {errors.message}
+              </p>
+            )}
           </label>
           <textarea
-  id="message"
-  name="message"
-  rows={4}
-  value={form.message}
-  onChange={handleChange}
-  onBlur={handleBlur}
-  className="p-2 bg-[#dcd0c0] rounded text-black w-full h-[120px] min-h-[120px] resize-none"
-/>
+            id="message"
+            name="message"
+            rows={4}
+            value={form.message}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className="p-2 bg-[#dcd0c0] rounded text-black w-full h-[120px] min-h-[120px] resize-none"
+          />
 
+          {/* RECAPTCHA */}
+          <div className="flex flex-col md:flex-row md:justify-between items-center">
+            <ReCAPTCHA
+              sitekey={siteKey || ""}
+              onChange={(token) => setRecaptcha(token)}
+            />
 
-
-          {touched.message && errors.message && (
-            <p role="alert" className="text-red-400">
-              {errors.message}
-            </p>
-          )}
-
-          <button
-            type="submit"
-            className="btn41-43 btn-42 mt-4 text-[16px] font-phudu tracking-widest"
-          >
-            Enviar
-          </button>
+            <button
+              disabled={!recaptcha}
+              type="submit"
+              className="btn41-43 btn-42 mt-4 text-[16px] font-phudu tracking-widest"
+            >
+              Envia
+            </button>
+          </div>
         </form>
 
         {/* GRID MAPA + REDES */}

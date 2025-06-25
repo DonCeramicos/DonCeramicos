@@ -9,7 +9,7 @@ export const Offers = () => {
   const { ofertas } = useContext(ContextApp);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 48;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = ofertas.slice(startIndex, startIndex + itemsPerPage);
   const totalPages = Math.ceil(ofertas.length / itemsPerPage);
@@ -38,26 +38,58 @@ export const Offers = () => {
           Ofertas Mensuales
         </h1>
 
-        <nav
-          aria-label="Paginación de productos en oferta"
-          className="flex flex-wrap justify-center items-center gap-[4px]"
-        >
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              onClick={() => setCurrentPage(page)}
-              className={`p-2 w-6 h-6 rounded-xs text-white text-sm text-center flex items-center justify-center ${
-                page === currentPage
-                  ? "bg-btn-paginado-selected shadow-lg color-font scale-105"
-                  : "bg-btn-paginado hover:bg-stone-500"
-              }`}
-              aria-current={page === currentPage ? "page" : undefined}
-              aria-label={`Ir a la página ${page}`}
-            >
-              {page}
-            </button>
-          ))}
-        </nav>
+{totalPages > 1 && (
+  <nav
+    aria-label="Paginación de productos en oferta"
+    className="flex overflow-x-auto no-scrollbar whitespace-nowrap items-center gap-[4px] px-2 py-1 max-w-full"
+  >
+    {/* Botón Anterior */}
+    <button
+      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+      disabled={currentPage === 1}
+      className={`p-2 w-6 h-6 rounded-xs text-white text-sm flex items-center justify-center hover:cursor-pointer ${
+        currentPage === 1
+          ? "bg-gray-700 cursor-not-allowed"
+          : "bg-btn-paginado hover:bg-stone-500"
+      }`}
+      aria-label="Página anterior"
+    >
+      ←
+    </button>
+
+    {/* Botones de páginas */}
+    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+      <button
+        key={page}
+        onClick={() => setCurrentPage(page)}
+        className={`p-2 w-6 h-6 rounded-xs text-white text-sm flex items-center justify-center ${
+          page === currentPage
+            ? "bg-btn-paginado-selected shadow-lg color-font scale-105"
+            : "bg-btn-paginado hover:bg-stone-500"
+        }`}
+        aria-current={page === currentPage ? "page" : undefined}
+        aria-label={`Ir a la página ${page}`}
+      >
+        {page}
+      </button>
+    ))}
+
+    {/* Botón Siguiente */}
+    <button
+      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+      disabled={currentPage === totalPages}
+      className={`p-2 w-6 h-6 rounded-xs text-white text-sm flex items-center justify-center ${
+        currentPage === totalPages
+          ? "bg-gray-700 cursor-not-allowed"
+          : "bg-btn-paginado hover:bg-stone-500"
+      }`}
+      aria-label="Página siguiente"
+    >
+      →
+    </button>
+  </nav>
+)}
+
       </div>
 
       {/* Lectores de pantalla */}

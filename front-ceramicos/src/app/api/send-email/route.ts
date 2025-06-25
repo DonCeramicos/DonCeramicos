@@ -8,6 +8,7 @@ const CLIENT_SECRET = process.env.GMAIL_CLIENT_SECRET;
 const REFRESH_TOKEN = process.env.GMAIL_REFRESH_TOKEN;
 const REDIRECT_URI = process.env.GMAIL_REDIRECT_URI;
 const GMAIL_USER = process.env.GMAIL_USER;
+const secretKey = process.env.CAPTCHA_SECRET_KEY;
 
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
@@ -18,23 +19,48 @@ const oAuth2Client = new google.auth.OAuth2(
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 export async function POST(req: Request) {
-  const {  message, phone, email, name, surname } = await req.json();
+  const { message, phone, email, name, surname, recaptcha } = await req.json();
+
+  if (!recaptcha)
+    return NextResponse.json(
+      { error: "El captcha es requerido" },
+      { status: 400 }
+    );
+  // Verificamos el token con la API de Google
+  const verifyURL = "https://www.google.com/recaptcha/api/siteverify";
+
+  const recaptchaRes = await fetch(verifyURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `secret=${secretKey}&response=${recaptcha}`,
+  });
+
+  const recaptchaData = await recaptchaRes.json();
+
+  if (!recaptchaData.success || recaptchaData.score < 0.5) {
+    return NextResponse.json(
+      { error: "Falló la verificación reCAPTCHA" },
+      { status: 403 }
+    );
+  }
+
   try {
     const accessToken = await oAuth2Client.getAccessToken();
     const transport = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    type: "OAuth2",
-    user: GMAIL_USER,
-    clientId: CLIENT_ID,
-    clientSecret: CLIENT_SECRET,
-    refreshToken: REFRESH_TOKEN,
-    accessToken: accessToken.token || accessToken,
-  },
-} as nodemailer.TransportOptions);
-
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        type: "OAuth2",
+        user: GMAIL_USER,
+        clientId: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        refreshToken: REFRESH_TOKEN,
+        accessToken: accessToken.token || accessToken,
+      },
+    } as nodemailer.TransportOptions);
 
     const mailAdmin = {
       from: `"${name}" <${email}>`,
@@ -76,8 +102,8 @@ export async function POST(req: Request) {
         `,
     };
 
-    await transport.sendMail( mailAdmin );
-    await transport.sendMail( mailUser );
+    await transport.sendMail(mailAdmin);
+    await transport.sendMail(mailUser);
 
     return NextResponse.json({ success: true });
   } catch (error) {

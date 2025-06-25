@@ -21,12 +21,12 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self';",
-              "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://apis.google.com 'unsafe-inline';",
+              "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://apis.google.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-inline';",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://maps.gstatic.com;",
               "img-src 'self' data: https://maps.googleapis.com https://maps.gstatic.com https://lh3.googleusercontent.com https://firebasestorage.googleapis.com https://res.cloudinary.com;",
               "font-src 'self' https://fonts.gstatic.com;",
-              "connect-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://apis.google.com https://firebasestorage.googleapis.com https://res.cloudinary.com;",
-              "frame-src https://www.google.com;",
+              "connect-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://apis.google.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://firebasestorage.googleapis.com https://res.cloudinary.com;",
+              "frame-src https://www.google.com/recaptcha/ https://www.google.com;",
             ].join(" "),
           },
           {

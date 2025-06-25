@@ -5,13 +5,13 @@ import { ContextApp, ICeramicos } from "../../context/context";
 import { Product_Card } from "../Product_Card";
 import { useRouter } from "next/navigation";
 
-export const ProductList = () => { 
+export const ProductList = () => {
   const { ceramicos } = useContext(ContextApp);
   const [searchData, setSearchData] = useState<ICeramicos[]>([]);
   const [categoria, setCategoria] = useState<ICeramicos[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 48;
 
   const router = useRouter();
   const handleDetail = (id: string) => {
@@ -75,28 +75,61 @@ export const ProductList = () => {
             Nuestros Productos
           </h1>
 
-          {searchData.length === 0 && categoria.length === 0 && (
-            <div
-              aria-label="Paginado"
-              className="flex flex-wrap justify-center items-center gap-[4px]"
-            >
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`p-2 w-6 h-6 rounded-xs text-white text-sm text-center flex items-center justify-center ${
-                      page === currentPage
-                        ? "bg-btn-paginado-selected shadow-lg color-font scale-105"
-                        : "bg-btn-paginado hover:bg-stone-500"
-                    }`}
-                  >
-                    {page}
-                  </button>
-                )
-              )}
-            </div>
-          )}
+          {searchData.length === 0 &&
+            categoria.length === 0 &&
+            totalPages > 1 && (
+              <div
+                aria-label="Paginado"
+                className="flex overflow-x-auto no-scrollbar whitespace-nowrap items-center gap-[4px] px-2 py-1 max-w-full"
+              >
+                {/* Botón Anterior */}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                  className={`p-2 w-6 h-6 rounded-xs text-white text-sm flex items-center justify-center hover:cursor-pointer ${
+                    currentPage === 1
+                      ? "bg-gray-700 cursor-not-allowed"
+                      : "bg-btn-paginado hover:bg-stone-500"
+                  }`}
+                >
+                  ←
+                </button>
+
+                {/* Botones de páginas */}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`p-2 w-6 h-6 rounded-xs text-white text-sm flex items-center justify-center ${
+                        page === currentPage
+                          ? "bg-btn-paginado-selected shadow-lg color-font scale-105"
+                          : "bg-btn-paginado hover:bg-stone-500"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
+
+                {/* Botón Siguiente */}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className={`p-2 w-6 h-6 rounded-xs text-white text-sm flex items-center justify-center hover:cursor-pointer ${
+                    currentPage === totalPages
+                      ? "bg-gray-700 cursor-not-allowed"
+                      : "bg-btn-paginado hover:bg-stone-500"
+                  }`}
+                >
+                  →
+                </button>
+              </div>
+            )}
         </div>
 
         {/* Búsqueda y filtros */}
@@ -116,8 +149,7 @@ export const ProductList = () => {
           </div>
 
           {/* Botones filtrado */}
-<div className="flex flex-row flex-wrap gap-2 w-full">
-
+          <div className="flex flex-row flex-wrap gap-2 w-full">
             <button
               aria-label="Filtrar por piso"
               onClick={() => handleCategoria("piso")}
@@ -149,7 +181,7 @@ export const ProductList = () => {
         {/* Productos */}
         <div
           aria-label="Listado de productos"
-          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-1 overflow-y-auto mt-4 max-h-[63vh] md:h-[80vh] w-full max-w-7xl px-2 md:px-6 md:items-start md:justify-center "
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-1 scrollbar  overflow-y-auto mt-4 max-h-[63vh] md:h-[80vh] w-full max-w-7xl px-2 md:px-6 md:items-start md:justify-center "
         >
           {searchTerm && searchData.length === 0 ? (
             <p className="col-span-full text-white font-phudu text-lg text-center mt-10">
