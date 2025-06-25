@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { toast } from "sonner";
+import SendLoader from "../sendLoader";
 
 interface IForm {
   name: string;
@@ -50,6 +51,8 @@ export const Contact = () => {
     email: false,
     message: false,
   });
+
+  const [loading, setLoading] = useState(false);
 
   const validateForm = (form: IForm): Ierror => {
     const newErrors: Ierror = {
@@ -119,6 +122,8 @@ export const Contact = () => {
     const hasErrors = Object.values(validationErrors).some((err) => err !== "");
     if (hasErrors) return;
 
+    setLoading(true);
+
     try {
       const response = await fetch("/api/send-email", {
         method: "POST",
@@ -130,6 +135,7 @@ export const Contact = () => {
 
       const data = await response.json();
       console.log(data);
+
       toast.success("Correo enviado con exito", {
         style: {
           background: "#e8e8e8",
@@ -153,6 +159,8 @@ export const Contact = () => {
           color: "#000000",
         },
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -161,6 +169,11 @@ export const Contact = () => {
       id="contacto"
       className="flex flex-col bg-gradient-to-b from-[#000000] via-[#292929db] to-[#272727] pt-20 relative scroll-mt-[-6rem] md:scroll-mt-0"
     >
+       { loading && (
+      <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-50">
+        <SendLoader />
+      </div>
+    )}
       <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#000000,transparent)]">
         <div
           className="bg-cover bg-no-repeat bg-left mask-custom"

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ContextApp, Idestacadas } from "../../context/context";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Loader from "../customLoader";
 
 export const Carousel = () => {
   const { destacadas } = useContext(ContextApp);
@@ -12,16 +13,18 @@ export const Carousel = () => {
     router.push(`/detailItem/${id}`);
   };
 
-  if (!destacadas || destacadas.length === 0) return <p>No hay destacadas.</p>;
 
   // Duplicamos para efecto de loop
   const loopItems = destacadas.concat(destacadas);
 
   return (
+      
     <section
-      className="w-full h-[12rem] overflow-hidden relative md:bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] top-1 md:top-54 flex items-center md:shadow-lg"
+      className="w-full h-[12rem] overflow-hidden relative md:bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] top-1 md:top-54 flex items-center justify-center md:shadow-lg"
       aria-label="Cinta deslizante con productos destacados"
     >
+
+    { !destacadas || destacadas.length === 0? <Loader></Loader>: (
       <ul className="flex w-max animate-scrollBanner hover:[animation-play-state:paused]">
         {loopItems.map((item: Idestacadas, i) => (
           <li
@@ -43,7 +46,7 @@ export const Carousel = () => {
             </div>
           </li>
         ))}
-      </ul>
+      </ul>)}
     </section>
   );
 };
