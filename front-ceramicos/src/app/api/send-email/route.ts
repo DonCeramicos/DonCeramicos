@@ -44,7 +44,7 @@ export async function POST(req: Request) {
       html: `
         <div style="padding: 10px; border-radius: 5px; width: 100%; font-family: Arial, sans-serif; background-color: #f9f9f9;">
         <div style="background-color: rgba(255, 129, 2, 0.992); padding: 10px; border-radius: 5px; display: flex; align-items: center;">
-        <img src="https://.com/logo-bg.png" alt="logo" style="width: 90px; height: 50px; margin-right: 10px;">
+        <img src="https://donceramicos.vercel.app/logo-bg.png" alt="logo" style="width: 90px; height: 50px; margin-right: 10px;">
         <h1 style="font-size: 16px; color: #000000; font-family: monospace; margin: 0;">RECIBISTE UNA NUEVA CONSULTA DESDE EL SITIO WEB</h1>
         </div>
         <p style="text-align: start; font-size: 14px;">Hola te acercamos una copia de la consulta con los datos de contacto del remitente:</p>
