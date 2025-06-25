@@ -53,7 +53,7 @@ export default function Catalogo() {
 
           <div className="absolute inset-0 grid  [mask-image:linear-gradient(to_top,#bfbfbf,transparent)] ">
             <div
-              className=" bg-cover bg-center bg-no-repeat   "
+              className=" bg-cover bg-center bg-no-repeat mask-custom  "
               style={{ backgroundImage: "url('/background-offers.jpg')" }}
             ></div>
           </div>

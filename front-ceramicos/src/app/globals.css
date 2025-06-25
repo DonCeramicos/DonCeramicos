@@ -59,6 +59,7 @@ body {
   -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
 }
 
+
 .texto-con-borde {
   font-size: 5rem;
   color: rgb(222, 222, 222);
