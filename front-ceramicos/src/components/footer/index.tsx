@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 export const Footer = () => {
   const path = usePathname();
   return (
-    <footer className={`w-full h-full z-60 relative flex flex-nowrap justify-center gap-6 md:flex-row md:justify-evenly ${path === '/catalogo' ? 'bg-black' : 'bg-custom-5'} color-font-2 py-3 px-4 font-phudu text-[12px]`}>
+    <footer className={`w-full h-full z-60 relative flex flex-wrap justify-center gap-6 md:flex-row md:justify-evenly ${path === '/catalogo' ? 'bg-black' : 'bg-custom-5'} color-font-2 py-3 px-4 font-phudu text-[12px]`}>
       <span className="sr-only">
         Pie de pagina de Don Ceramicos con datos de contacto telfonico redes sociales, correo electronico y medios de pago
       </span>
