@@ -306,7 +306,7 @@ export const Contact = () => {
               type="submit"
               className="btn41-43 btn-42 mt-4 text-[16px] font-phudu tracking-widest"
             >
-              Envia
+              Enviar
             </button>
           </div>
         </form>
