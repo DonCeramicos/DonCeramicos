@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ProductDetail from "./productDetail";
-import { ICeramicos } from "@/context/context";
+import { ICeramicos } from "@/types";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 

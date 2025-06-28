@@ -3,30 +3,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 import SendLoader from "../sendLoader";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Ierror, IForm, ITouched } from "@/types";
 
-interface IForm {
-  name: string;
-  surname: string;
-  phone: string;
-  email: string;
-  message: string;
-}
-
-interface Ierror {
-  name: string;
-  surname: string;
-  phone: string;
-  email: string;
-  message: string;
-}
-
-interface ITouched {
-  name: boolean;
-  surname: boolean;
-  phone: boolean;
-  email: boolean;
-  message: boolean;
-}
 
 export const Contact = () => {
   const [form, setForm] = useState<IForm>({

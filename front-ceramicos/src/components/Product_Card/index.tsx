@@ -1,5 +1,5 @@
 "use client";
-import { ICeramicos } from "@/context/context";
+import { ICeramicos } from "@/types";
 import Image from "next/image";
 import { Eye, EyeClosed } from "lucide-react";
 import { useState } from "react";

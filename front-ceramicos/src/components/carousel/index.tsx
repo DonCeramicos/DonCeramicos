@@ -1,9 +1,10 @@
 "use client";
 import { useContext } from "react";
-import { ContextApp, Idestacadas } from "../../context/context";
+import { ContextApp } from "../../context/context";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Loader from "../customLoader";
+import { Idestacadas } from "@/types";
 
 export const Carousel = () => {
   const { destacadas } = useContext(ContextApp);

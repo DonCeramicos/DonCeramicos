@@ -1,8 +1,10 @@
 "use client";
-import { ContextApp, ICeramicos } from "@/context/context";
+import { ContextApp } from "@/context/context";
 import { useContext, useState, useEffect } from "react";
 import { Product_Card } from "../Product_Card";
 import { useRouter } from "next/navigation";
+import { ICeramicos } from "@/types";
+
 
 export const Offers = () => {
   const router = useRouter();

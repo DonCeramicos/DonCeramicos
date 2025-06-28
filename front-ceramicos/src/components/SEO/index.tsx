@@ -1,13 +1,8 @@
 // src/components/SEO.tsx
+import { SEOProps } from "@/types";
 import Head from "next/head";
 
-interface SEOProps {
-  title?: string;
-  description?: string;
-  keywords?: string;
-  canonicalUrl?: string;
-  ogImage?: string;
-}
+
 
 export const SEO = ({
   title = "Don Cerámicos - Calidad y diseño en cerámicos",

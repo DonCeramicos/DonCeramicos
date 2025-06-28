@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect, useContext } from "react";
-import { ContextApp, Idestacadas, ICeramicos } from "@/context/context";
+import { ContextApp } from "@/context/context";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { Idestacadas, ICeramicos} from "@/types";
  
 export default function ProductDetail({ id }: { id: string }) {
 
