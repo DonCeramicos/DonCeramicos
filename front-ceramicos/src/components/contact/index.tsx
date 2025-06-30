@@ -291,7 +291,7 @@ export const Contact = () => {
 
         {/* GRID MAPA + REDES */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-[1200px] mx-auto text-center font-phudu"
+          className="grid grid-cols-1 mt-20 md:grid-cols-2 gap-10 w-full max-w-[1200px] mx-auto text-center font-phudu"
           role="region"
           aria-label="Sección con mapa, redes sociales y datos de contacto"
         >

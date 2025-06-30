@@ -22,7 +22,7 @@ export const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className="p-1 bg-custom-2 sticky top-0 z-100 flex justify-evenly items-center">
+    <nav className="p-2 bg-custom-2 sticky top-0 z-100 flex justify-evenly items-center">
       <span className="sr-only">
         Barra de navegación con opciones para dirigirse a las distintas secciones de la página
       </span>
@@ -39,7 +39,7 @@ export const Navbar = () => {
           alt="Logo de Don Cerámicos"
           width={130}
           height={150}
-          className={`${pathname === "/" ? "scale-125 pt-1" : ""} `}
+          className={`${pathname === "/" ? "scale-125" : ""} `}
         />
       </Link>
 

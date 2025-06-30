@@ -83,7 +83,7 @@ export default function ProductDetail({ id }: { id: string }) {
         <section className="flex items-center justify-center w-full md:w-[30vw] h-[200px] md:h-[73vh] rounded relative">
           <div className="relative w-full h-full rounded">
             <Image
-              src={itemDetail.ambiente || "/ambiente_porcelanatos_default.jpg"}
+              src={itemDetail.ambiente || "/ambiente-default.jpg"}
               alt="Ambiente de fondo del producto"
               width={500}
               height={500}

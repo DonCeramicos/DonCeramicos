@@ -44,7 +44,7 @@ export const Context = ({ children }: ContextProviderProps) => {
   useEffect(() => {
     const fetchCeramicos = async () => {
       const data = await getProducts();
-      setCeramicos(data);
+      setCeramicos(data.filter((ceramico: ICeramicos) => ceramico.oferta === false));
       setCeramicosOffers(data.filter((ceramico: ICeramicos) => ceramico.oferta));
     };
     const fetchDestacados = async () => {
@@ -54,13 +54,13 @@ export const Context = ({ children }: ContextProviderProps) => {
     };
     const fetchPegamentos = async () => {
       const data = await getPegamentos();
-      setPegamentos(data);
+      setPegamentos(data.filter((pegamento: Ipegamentos) => pegamento.oferta === false));
       setPegamentosOffers(data.filter((pegamento: Ipegamentos) => pegamento.oferta));
       console.log(data);
     };
     const fetchPorcelanatos = async () => {
       const data = await getPorcelanatos();
-      setPorcelanatos(data);
+      setPorcelanatos(data.filter((porcelanato: Iporcelanatos) => porcelanato.oferta === false));
       setPorcelanatosOffers(data.filter((porcelanato: Iporcelanatos) => porcelanato.oferta));
       console.log(data);
     }
