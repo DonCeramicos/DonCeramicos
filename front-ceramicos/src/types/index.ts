@@ -34,6 +34,7 @@ export interface Iporcelanatos {
   ambiente: string;
   oferta: boolean;
   nombre: string;
+  descripcion?: string;
   opcion_2?: string;
   opcion_3?: string;
   opcion_4?: string;
@@ -43,6 +44,7 @@ export interface Ipegamentos {
   imagen: string;
   oferta: boolean;
   nombre: string;
+  ambiente?: string;
   opcion_2?: string;
   opcion_3?: string;
   opcion_4?: string;

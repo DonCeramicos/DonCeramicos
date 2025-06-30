@@ -1,37 +1,23 @@
 "use client";
 import { Ipegamentos } from "@/types";
 import Image from "next/image";
-import { Eye, EyeClosed } from "lucide-react";
-import { useState } from "react";
 
 type PegamentoCardProps = {
   pegamento: Ipegamentos;
-  onClick?: () => void;
   isInOffersSection?: boolean;
 };
 
 export const Pegamento_Card = ({
   pegamento,
-  onClick,
   isInOffersSection = false,
 }: PegamentoCardProps) => {
-  const [hovered, setHovered] = useState(false);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      onClick?.();
-    }
-  };
+
 
   return (
     <article
       className="relative h-[270px] w-[170px] rounded-lg p-2 bg-[#1a19197b] flex flex-col items-center shadow-md hover:shadow-lg transition-shadow duration-300"
-      role={onClick ? "button" : undefined}
-      tabIndex={onClick ? 0 : undefined}
-      onClick={onClick}
-      onKeyDown={onClick ? handleKeyDown : undefined}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+
     >
       {isInOffersSection && pegamento.oferta && (
         <div className="absolute top-[-1px] left-[-1px] overflow-hidden w-[76px] h-[76px]">
@@ -54,26 +40,11 @@ export const Pegamento_Card = ({
         <p className="color-font-2">{pegamento.nombre}</p>
       </div>
 
-      {onClick && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onClick();
-          }}
-          className="p-1 w-10 h-10 rounded flex items-center justify-center relative overflow-hidden transition-colors duration-300"
-        >
-          <EyeClosed
-            className={`w-5 h-5 text-[#000000] absolute transition-all duration-300 ${
-              hovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
-            }`}
-          />
-          <Eye
-            className={`w-5 h-5 text-[#1a1a1a] absolute transition-all duration-300 ${
-              hovered ? "opacity-100 scale-100" : "opacity-0 scale-105"
-            }`}
-          />
-        </button>
-      )}
+      <div className="flex flex-col items-center w-full mt-2">
+        <p className="color-font-2">{pegamento.opcion_2}</p>
+        <p className="color-font-2">{pegamento.opcion_3}</p>
+        <p className="color-font-2">{pegamento.opcion_4}</p>     
+      </div>
     </article>
   );
 };

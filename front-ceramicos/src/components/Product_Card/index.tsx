@@ -70,19 +70,16 @@ export const Product_Card = ({
     }}
     className="p-1 w-10 h-10 rounded flex items-center justify-center relative overflow-hidden transition-colors duration-300"
   >
-    {/* Ícono OJO CERRADO */}
-    <EyeClosed
-      className={`w-5 h-5 text-[#000000] absolute transition-all duration-300 ${
-        hovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
-      }`}
-    />
-
-    {/* Ícono OJO ABIERTO */}
-    <Eye
-      className={`w-5 h-5 text-[#1a1a1a] absolute transition-all duration-300 ${
-        hovered ? "opacity-100 scale-100" : "opacity-0 scale-105"
-      }`}
-    />
+ <EyeClosed
+            className={`w-5 h-5 text-[#747474] absolute transition-all duration-300 ${
+              hovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
+            }`}
+          />
+          <Eye
+            className={`w-5 h-5 text-[#f2f2f2] absolute transition-all duration-300 ${
+              hovered ? "opacity-100 scale-100" : "opacity-0 scale-105"
+            }`}
+          />
   </button>
 )}
 

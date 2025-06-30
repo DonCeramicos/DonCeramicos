@@ -12,8 +12,9 @@ type ProductoTipo = "ceramicos" | "porcelanatos" | "pegamentos";
 
 export const ProductList = () => {
   const { ceramicos, porcelanatos, pegamentos } = useContext(ContextApp);
-  const [tipoSeleccionado, setTipoSeleccionado] =
-    useState<ProductoTipo>("ceramicos");
+  const [tipoSeleccionado, setTipoSeleccionado] = useState<ProductoTipo | null>(
+    null
+  );
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState<
@@ -64,19 +65,19 @@ export const ProductList = () => {
   };
 
   // Lógica para cerámicos (con paginado)
-const getBaseList = () => {
-  if (tipoSeleccionado === "ceramicos") {
-    return ceramicos.filter((c) => !c.oferta);
-  }
-  if (tipoSeleccionado === "porcelanatos") {
-    return porcelanatos.filter((p) => !p.oferta);
-  }
-  return pegamentos.filter((p) => !p.oferta);
-};
+  const getBaseList = () => {
+    if (tipoSeleccionado === "ceramicos") {
+      return ceramicos.filter((c) => !c.oferta);
+    }
+    if (tipoSeleccionado === "porcelanatos") {
+      return porcelanatos.filter((p) => !p.oferta);
+    }
+    return pegamentos.filter((p) => !p.oferta);
+  };
 
-const paginados =
-  searchData.length > 0 || categoria.length > 0 ? [] : getBaseList();
-
+  
+  const paginados =
+    searchData.length > 0 || categoria.length > 0 ? [] : getBaseList();
 
   const totalPages = Math.ceil(paginados.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -91,7 +92,7 @@ const paginados =
   const renderFiltrosCategoria = () => {
     if (tipoSeleccionado !== "ceramicos") return null;
     return (
-      <div className="flex flex-wrap gap-2 w-full">
+      <div className="flex flex-wrap gap-2 w-full font-phudu">
         <button
           onClick={() => handleCategoria("piso")}
           className="border rounded px-2 py-1 text-sm"
@@ -180,24 +181,59 @@ const paginados =
 
         {/* Selector de tipo de producto */}
         <div className="flex gap-2 mb-4 font-phudu text-white">
-          <button
-            onClick={() => setTipoSeleccionado("ceramicos")}
-            className="px-3 py-1 border rounded"
-          >
-            Cerámicos
-          </button>
-          <button
-            onClick={() => setTipoSeleccionado("porcelanatos")}
-            className="px-3 py-1 border rounded"
-          >
-            Porcelanatos
-          </button>
-          <button
-            onClick={() => setTipoSeleccionado("pegamentos")}
-            className="px-3 py-1 border rounded"
-          >
-            Pegamentos
-          </button>
+
+<button
+  onClick={() => {
+    setTipoSeleccionado("ceramicos");
+    setSearchTerm("");
+    setSearchData([]);
+    setCategoria([]);
+    setCurrentPage(1);
+  }}
+  className="border border-white rounded-md px-4 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
+>
+  Cerámicos
+</button>
+
+<button
+  onClick={() => {
+    setTipoSeleccionado("porcelanatos");
+    setSearchTerm("");
+    setSearchData([]);
+    setCategoria([]);
+    setCurrentPage(1);
+  }}
+  className="border border-white rounded-md px-4 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
+>
+  Porcelanatos
+</button>
+
+<button
+  onClick={() => {
+    setTipoSeleccionado("pegamentos");
+    setSearchTerm("");
+    setSearchData([]);
+    setCategoria([]);
+    setCurrentPage(1);
+  }}
+  className="border border-white rounded-md px-4 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
+>
+  Pegamentos
+</button>
+
+<button
+  onClick={() => {
+    setTipoSeleccionado(null);
+    setSearchTerm("");
+    setSearchData([]);
+    setCategoria([]);
+    setCurrentPage(1);
+  }}
+  className="border border-white rounded-md px-4 py-[6px] text-sm text-white hover:bg-red-500 hover:border-red-500 transition-colors"
+>
+  Limpiar
+</button>
+
         </div>
 
         {/* Búsqueda y filtros */}
@@ -207,6 +243,7 @@ const paginados =
             type="text"
             placeholder="Buscar producto"
             onChange={handleSearch}
+            value={searchTerm}
           />
           {renderFiltrosCategoria()}
         </div>
@@ -214,11 +251,15 @@ const paginados =
         {/* Productos */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-1 overflow-y-auto mt-4 max-h-[63vh] md:h-[80vh] w-full max-w-7xl px-2 md:px-6">
           {searchTerm && searchData.length === 0 ? (
-            <p className="col-span-full text-white text-lg text-center mt-10">
+            <p className="col-span-full text-white text-lg text-center mt-10 px-4">
               No se encontraron productos que coincidan con tu búsqueda.
             </p>
-          ) : productosAMostrar.length === 0 && categoria.length > 0 ? (
-            <p className="col-span-full text-white text-lg text-center mt-10">
+          ) : !tipoSeleccionado ? (
+            <p className="col-span-full text-white text-lg text-center mt-10 px-4">
+              Seleccioná qué tipo de productos querés ver.
+            </p>
+          ) : productosAMostrar.length === 0 ? (
+            <p className="col-span-full text-white text-lg text-center mt-10 px-4">
               No hay productos disponibles en esta categoría.
             </p>
           ) : (
