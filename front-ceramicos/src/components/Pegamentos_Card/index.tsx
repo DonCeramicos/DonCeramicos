@@ -11,39 +11,53 @@ export const Pegamento_Card = ({
   pegamento,
   isInOffersSection = false,
 }: PegamentoCardProps) => {
-
-
-
   return (
     <article
-      className="relative h-[270px] w-[170px] rounded-lg p-2 bg-[#1a19197b] flex flex-col items-center shadow-md hover:shadow-lg transition-shadow duration-300"
-
+      className="relative w-[170px] sm:w-[160px] h-[250px] bg-[#1a19197b] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center p-2"
     >
+      {/* OFERTA badge */}
       {isInOffersSection && pegamento.oferta && (
-        <div className="absolute top-[-1px] left-[-1px] overflow-hidden w-[76px] h-[76px]">
+        <div className="absolute top-0 left-0 overflow-hidden w-[76px] h-[76px]">
           <div className="bg-red-600 text-white text-[10px] font-bold rotate-[-45deg] w-[100px] text-center absolute top-3 left-[-30px] z-50">
             ¡OFERTA!
           </div>
         </div>
       )}
 
-      <Image
-        src={pegamento.imagen || "/placeholder.png"}
-        alt={pegamento.nombre}
-        width={500}
-        height={500}
-        className="object-cover rounded h-[180px] w-full hover:scale-[1.03] transition-transform duration-300"
-        loading="lazy"
-      />
-
-      <div className="p-1 flex flex-col items-center text-[13px] w-full text-[#c0b283] font-phudu mt-2 tracking-wide">
-        <p className="color-font-2">{pegamento.nombre}</p>
+      {/* Imagen */}
+      <div className="w-full aspect-[1/1] relative overflow-hidden rounded">
+        <Image
+          src={pegamento.imagen || "/placeholder.png"}
+          alt={pegamento.nombre}
+          fill
+          className="object-cover hover:scale-[1.03] transition-transform duration-300"
+          sizes="(max-width: 640px) 100vw, 170px"
+        />
       </div>
 
-      <div className="flex flex-col items-center w-full mt-2">
-        <p className="color-font-2">{pegamento.opcion_2}</p>
-        <p className="color-font-2">{pegamento.opcion_3}</p>
-        <p className="color-font-2">{pegamento.opcion_4}</p>     
+      {/* Contenido */}
+      <div className="flex flex-col items-center w-full text-[12px] sm:text-[11px] text-[#c0b283] font-phudu mt-2 gap-[2px] text-center">
+        {/* Nombre del producto */}
+        <p className="font-semibold truncate w-full" title={pegamento.nombre}>
+          {pegamento.nombre}
+        </p>
+
+        {/* Opciones, se muestran solo si existen */}
+        {pegamento.opcion_2 && (
+          <p className="text-wrap break-words w-full leading-snug">
+            {pegamento.opcion_2}
+          </p>
+        )}
+        {pegamento.opcion_3 && (
+          <p className="text-wrap break-words w-full leading-snug">
+            {pegamento.opcion_3}
+          </p>
+        )}
+        {pegamento.opcion_4 && (
+          <p className="text-wrap break-words w-full leading-snug">
+            {pegamento.opcion_4}
+          </p>
+        )}
       </div>
     </article>
   );
