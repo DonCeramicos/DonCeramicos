@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import  {format}  from 'date-fns';
 import { getProducts } from '@/helpers';
-import { ICeramicos } from '@/context/context';
+import { ICeramicos } from '@/types';
 
 export async function GET() {
   const baseUrl = 'https://donceramicos.com'; // Cambiá esto por tu dominio cuando lo tengas

@@ -2,10 +2,14 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const pathname = usePathname();
 
   // Bloquear scroll cuando el menú está abierto
   useEffect(() => {
@@ -29,11 +33,13 @@ export const Navbar = () => {
         className="hover:scale-105 transition-all duration-300"
         aria-label="Ir al inicio"
       >
+        
         <Image
           src="/logo-bg.png"
           alt="Logo de Don Cerámicos"
           width={130}
-          height={100}
+          height={150}
+          className={`${pathname === "/" ? "scale-125 pt-1" : ""} `}
         />
       </Link>
 

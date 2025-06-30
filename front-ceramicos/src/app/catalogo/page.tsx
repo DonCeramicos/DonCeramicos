@@ -3,13 +3,14 @@
 import { ProductList } from "@/components/ProductList";
 import { SEO } from "@/components/SEO";
 import { Offers } from "@/components/offers";
+import { InfoCompra } from "@/components/infoCompra";
 
 export default function Catalogo() {
   return (
     <>
       <SEO
         title={`Don Cerámicos `}
-        description={ `Descubrí nuestra amplia variedad de cerámicos para pisos y paredes, con calidad premium y diseños exclusivos.`}
+        description={`Descubrí nuestra amplia variedad de cerámicos para pisos y paredes, con calidad premium y diseños exclusivos.`}
         canonicalUrl={`https://donceramicos.com/catalogo`}
       />
       <main className="w-full border-none">
@@ -18,9 +19,7 @@ export default function Catalogo() {
           Catalogo de productos y ofertas de ceramicos del comercio: Don
           Ceramicos
         </span>
-        <section
-          className="bg-gradient-to-b from-[#000000d9] to-transparent "
-        >
+        <section className="bg-gradient-to-b from-[#000000d9] to-transparent ">
           {/* Fondo degradado con imagen y máscara */}
           <div className="absolute inset-0 grid z-[-1] [mask-image:linear-gradient(to_top,#373737,transparent)]">
             <div
@@ -33,22 +32,22 @@ export default function Catalogo() {
         </section>
 
         {/* Sección intermedia: subtítulo y parrafo */}
-        <section className="relative  h-[60vh] bg-gradient-to-b from-[#ffffff] via-[#1a1810cf] to-[#000000] flex flex-col font-phudu items-center justify-center gap-4 text-white">
-          <h2 className="text-4xl font-poiret-one font-extrabold text-center text-[#1d1d1c]">
+        <section className="relative min-h-[80vh] md:min-h-[80vh] bg-gradient-to-b from-[#ffffff] via-[#1a1810cf] to-[#000000] flex flex-col font-phudu items-center justify-center gap-4 text-white px-4 py-16 md:py-0">
+          <h2 className="text-3xl md:text-4xl font-poiret-one font-extrabold text-center text-[#1d1d1c]">
             Mirá nuestras ofertas destacadas
           </h2>
-          <p className="md:text-base text-center max-w-[40rem] color-font-3 leading-relaxed">
+          <p className="text-sm md:text-base text-center max-w-[40rem] color-font leading-relaxed">
             Ofrecemos cerámicos de alta calidad con precios irresistibles.{" "}
             <br />
             Renová tus espacios con estilo y aprovechá los descuentos exclusivos
             de este mes.
           </p>
+
+          <InfoCompra />
         </section>
 
         {/* Sección 2: Ofertas */}
-        <section
-          className="  pt-3 relative bg-gradient-to-b from-[#000000] via-[#000000] to-[#000000] "
-        >
+        <section className="  pt-3 relative bg-gradient-to-b from-[#000000] via-[#000000] to-[#000000] ">
           {/* Fondo degradado con imagen y máscara */}
 
           <div className="absolute inset-0 grid  [mask-image:linear-gradient(to_top,#bfbfbf,transparent)] ">

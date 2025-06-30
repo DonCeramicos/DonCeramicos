@@ -29,7 +29,7 @@ export const ProductList = () => {
   const router = useRouter();
   const handleDetail = (producto: ICeramicos | Iporcelanatos | Ipegamentos) => {
     const slug = createSlug(producto.nombre, producto.id);
-  router.push(`/detalle/${slug}`);
+    router.push(`/detalle/${slug}`);
   };
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,7 +77,6 @@ export const ProductList = () => {
     return pegamentos.filter((p) => !p.oferta);
   };
 
-  
   const paginados =
     searchData.length > 0 || categoria.length > 0 ? [] : getBaseList();
 
@@ -94,7 +93,7 @@ export const ProductList = () => {
   const renderFiltrosCategoria = () => {
     if (tipoSeleccionado !== "ceramicos") return null;
     return (
-      <div className="flex flex-wrap gap-2 w-full font-phudu">
+      <div className="flex justify-center flex-wrap gap-2 w-full font-phudu">
         <button
           onClick={() => handleCategoria("piso")}
           className="border rounded px-2 py-1 text-sm"
@@ -182,60 +181,58 @@ export const ProductList = () => {
         </div>
 
         {/* Selector de tipo de producto */}
-        <div className="flex gap-2 mb-4 font-phudu text-white">
+        <div className="flex gap-1 mb-4 font-phudu text-white">
+          <button
+            onClick={() => {
+              setTipoSeleccionado("ceramicos");
+              setSearchTerm("");
+              setSearchData([]);
+              setCategoria([]);
+              setCurrentPage(1);
+            }}
+            className="border border-white rounded-md px-2 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
+          >
+            Cerámicos
+          </button>
 
-<button
-  onClick={() => {
-    setTipoSeleccionado("ceramicos");
-    setSearchTerm("");
-    setSearchData([]);
-    setCategoria([]);
-    setCurrentPage(1);
-  }}
-  className="border border-white rounded-md px-4 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
->
-  Cerámicos
-</button>
+          <button
+            onClick={() => {
+              setTipoSeleccionado("porcelanatos");
+              setSearchTerm("");
+              setSearchData([]);
+              setCategoria([]);
+              setCurrentPage(1);
+            }}
+            className="border border-white rounded-md px-2 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
+          >
+            Porcelanatos
+          </button>
 
-<button
-  onClick={() => {
-    setTipoSeleccionado("porcelanatos");
-    setSearchTerm("");
-    setSearchData([]);
-    setCategoria([]);
-    setCurrentPage(1);
-  }}
-  className="border border-white rounded-md px-4 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
->
-  Porcelanatos
-</button>
+          <button
+            onClick={() => {
+              setTipoSeleccionado("pegamentos");
+              setSearchTerm("");
+              setSearchData([]);
+              setCategoria([]);
+              setCurrentPage(1);
+            }}
+            className="border border-white rounded-md px-2 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
+          >
+            Pegamentos
+          </button>
 
-<button
-  onClick={() => {
-    setTipoSeleccionado("pegamentos");
-    setSearchTerm("");
-    setSearchData([]);
-    setCategoria([]);
-    setCurrentPage(1);
-  }}
-  className="border border-white rounded-md px-4 py-[6px] text-sm text-white hover:bg-white hover:text-black transition-colors"
->
-  Pegamentos
-</button>
-
-<button
-  onClick={() => {
-    setTipoSeleccionado(null);
-    setSearchTerm("");
-    setSearchData([]);
-    setCategoria([]);
-    setCurrentPage(1);
-  }}
-  className="border border-white rounded-md px-4 py-[6px] text-sm text-white hover:bg-red-500 hover:border-red-500 transition-colors"
->
-  Limpiar
-</button>
-
+          <button
+            onClick={() => {
+              setTipoSeleccionado(null);
+              setSearchTerm("");
+              setSearchData([]);
+              setCategoria([]);
+              setCurrentPage(1);
+            }}
+            className="border border-white rounded-md px-2 py-[1px] text-sm text-white hover:bg-red-500 hover:border-red-500 transition-colors"
+          >
+            borrar busqueda
+          </button>
         </div>
 
         {/* Búsqueda y filtros */}

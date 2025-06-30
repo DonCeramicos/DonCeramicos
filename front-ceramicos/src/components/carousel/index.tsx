@@ -9,7 +9,7 @@ export const Carousel = () => {
   const { destacadas } = useContext(ContextApp);
 
   const handleDetail = (producto: Idestacadas) => {
-    const mensaje = `Hola! Quiero hacer una consulta sobre este producto: ${producto.nombre}`;
+    const mensaje = `Hola! Quiero hacer una consulta sobre este producto: ${producto.nombre} con ${producto.oferta}% de descuento`;
     const urlEncoded = encodeURIComponent(mensaje);
     const telefono = "1133703961"; // 
     const wpUrl = `https://wa.me/${telefono}?text=${urlEncoded}`;

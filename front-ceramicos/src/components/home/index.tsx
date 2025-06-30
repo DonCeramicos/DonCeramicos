@@ -22,14 +22,14 @@ export const HomeComponent = () => {
         </h1>
         <h2
           aria-label="Explorá cerámicos para piso y pared con estilo."
-          className="font-phudu w-auto md:text-[1rem]  z-10 text-center mx-auto text-[#0f0f0f]  mt-[0.1rem]"
+          className="font-phudu font-bold w-auto md:text-[1rem]  z-10 text-center mx-auto text-[#e2dfdf]  mt-[0.1rem]"
         >
           Explorá cerámicos para piso y pared con estilo.
         </h2>
         <a
           aria-label="Pedi tu presupuesto"
           href="#contacto"
-          className="personal-bounce bn632-hover bn19 flex justify-center items-center mx-auto md:items-center md:py-2 md:px-6 md:text-xl font-poiret-one font-extrabold traking-widest hover:cursor-pointer z-40 md:mt-[1rem] mt-[4.5rem] text-black"
+          className="personal-bounce bn632-hover bn19 flex justify-center items-center mx-auto md:items-center md:py-2 md:px-6 md:text-xl font-poiret-one font-extrabold traking-widest hover:cursor-pointer z-40 md:mt-[1rem] mt-[4.5rem] text-white bg-[#1a1a1a] hover:bg-[#1a1a1a] py-2 px-4 rounded-full"
         >
           PEDI TU PRESUPUESTO
         </a>

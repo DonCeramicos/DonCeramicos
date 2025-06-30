@@ -4,9 +4,9 @@ import { useState, useEffect, useContext } from "react";
 import { ContextApp } from "@/context/context";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Idestacadas, ICeramicos, Iporcelanatos } from "@/types";
+import { ICeramicos, Iporcelanatos } from "@/types";
 
-type Producto = ICeramicos | Idestacadas | Iporcelanatos;
+type Producto = ICeramicos  | Iporcelanatos;
 
 export default function ProductDetail({ id }: { id: string }) {
   const [selectedImage, setSelectedImage] = useState<string>("");
@@ -22,9 +22,6 @@ export default function ProductDetail({ id }: { id: string }) {
       found = ceramicos.find((c) => c.id === id);
     }
 
-    if (!found && destacadas.length > 0) {
-      found = destacadas.find((d) => d.id === id);
-    }
 
     if (!found && porcelanatos.length > 0) {
       found = porcelanatos.find((p) => p.id === id);
