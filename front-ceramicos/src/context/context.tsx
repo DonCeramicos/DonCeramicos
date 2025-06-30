@@ -10,6 +10,8 @@ interface IContextProps {
   destacadas: Idestacadas[];
   pegamentos: Ipegamentos[];
   porcelanatos: Iporcelanatos[];
+  pegamentosOffers: Ipegamentos[];
+  porcelanatosOffers: Iporcelanatos[];
 }
 
 interface ContextProviderProps {
@@ -24,6 +26,8 @@ export const ContextApp = createContext<IContextProps>({
   destacadas: [],
   pegamentos: [],
   porcelanatos: [],
+  pegamentosOffers: [],
+  porcelanatosOffers: [],
 });
 
 
@@ -31,6 +35,8 @@ export const ContextApp = createContext<IContextProps>({
 export const Context = ({ children }: ContextProviderProps) => {
   const [ceramicos, setCeramicos] = useState<ICeramicos[]>([]);
   const [ofertas, setOfertas] = useState<ICeramicos[]>([]);
+  const [pegamentosOffers, setPegamentosOffers] = useState<Ipegamentos[]>([]);
+  const [porcelanatosOffers, setPorcelanatosOffers] = useState<Iporcelanatos[]>([]);
   const [destacadas, setDestacadas] = useState<Idestacadas[]>([]);
   const [pegamentos, setPegamentos] = useState<Ipegamentos[]>([]);
   const [porcelanatos, setPorcelanatos] = useState<Iporcelanatos[]>([]);
@@ -49,11 +55,13 @@ export const Context = ({ children }: ContextProviderProps) => {
     const fetchPegamentos = async () => {
       const data = await getPegamentos();
       setPegamentos(data);
+      setPegamentosOffers(data.filter((pegamento: Ipegamentos) => pegamento.oferta));
       console.log(data);
     };
     const fetchPorcelanatos = async () => {
       const data = await getPorcelanatos();
       setPorcelanatos(data);
+      setPorcelanatosOffers(data.filter((porcelanato: Iporcelanatos) => porcelanato.oferta));
       console.log(data);
     }
     fetchCeramicos();
@@ -62,7 +70,7 @@ export const Context = ({ children }: ContextProviderProps) => {
     fetchPorcelanatos();
   }, []);
 
-  const value = { ceramicos, setCeramicos, ofertas, destacadas, pegamentos, porcelanatos };
+  const value = { ceramicos, setCeramicos, ofertas, destacadas, pegamentos, porcelanatos, pegamentosOffers, porcelanatosOffers };
 
   return <ContextApp.Provider value={value}>{children}</ContextApp.Provider>;
 };

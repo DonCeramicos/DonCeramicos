@@ -129,7 +129,7 @@ const paginados =
 
       <section
         id="catalogo"
-        className="flex flex-col items-center min-h-screen px-2"
+        className="flex flex-col items-center min-h-screen px-2 scroll-mt-16 md:scroll-mt-20 "
       >
         {/* Header + paginado */}
         <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl gap-4 mb-2">
