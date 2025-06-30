@@ -233,7 +233,7 @@ export const Contact = () => {
 
           {/* EMAIL */}
           <label className="color-font-2 flex justify-between" htmlFor="email">
-            EMAIL
+              CORREO ELECTRONICO
             {touched.email && errors.email && (
               <p role="alert" className="text-red-400">
                 {errors.email}
@@ -351,7 +351,7 @@ export const Contact = () => {
                   />
                 </a>
                 <a
-                  href="https://wa.me/+5491128254000?text=Hola!%20Quiero%20hacer%20una%20consulta"
+                  href="https://wa.me/+5491133703961?text=Hola!%20Quiero%20hacer%20una%20consulta"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

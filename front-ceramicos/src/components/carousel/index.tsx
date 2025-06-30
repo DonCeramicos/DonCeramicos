@@ -11,7 +11,7 @@ export const Carousel = () => {
   const handleDetail = (producto: Idestacadas) => {
     const mensaje = `Hola! Quiero hacer una consulta sobre este producto: ${producto.nombre} con ${producto.oferta}% de descuento`;
     const urlEncoded = encodeURIComponent(mensaje);
-    const telefono = "1133703961"; // 
+    const telefono = "+5491133703961"; // 
     const wpUrl = `https://wa.me/${telefono}?text=${urlEncoded}`;
     window.open(wpUrl, "_blank");
   };
