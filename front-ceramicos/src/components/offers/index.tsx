@@ -57,11 +57,11 @@ export const Offers = () => {
     <section
       id="ofertas"
       aria-label="Sección de productos en oferta"
-      className="scroll-mt-16 md:scroll-mt-20 flex flex-col items-center justify-start min-h-[100vh] px-2 md:px-6 pt-6"
+      className="scroll-mt-20 md:scroll-mt-20 flex flex-col items-center justify-start min-h-[100vh] px-2 md:px-6 pt-6"
     >
       {/* Título */}
       <div className="w-full max-w-7xl mb-4">
-        <h1 className="text-xl sm:text-2xl font-phudu color-font-3 font-light text-left">
+        <h1 className="text-xl sm:text-2xl font-phudu color-font-3 font-light text-center">
           Ofertas Mensuales
         </h1>
       </div>
