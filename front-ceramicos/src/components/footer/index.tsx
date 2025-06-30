@@ -11,9 +11,9 @@ export const Footer = () => {
       {/* CONTACTO */}
       <section className="flex flex-col gap-2 w-[45%] min-w-[140px] max-w-[240px] md:items-start order-1">
         <p className="text-left w-full">CONTACTANOS</p>
-        <a href="tel:+5491123456789" className="flex gap-2 items-center hover:underline w-full">
+        <a href="tel:+5491133703961" className="flex gap-2 items-center hover:underline w-full">
           <img src="/telefono-movil.png" alt="telefono" className="h-6 w-6" />
-          <p>+54 9 11 2345-6789</p>
+          <p>+54 9 1133703961</p>
         </a>
         <a href="mailto:donceramicos.info@gmail.com" className="flex gap-2 items-center hover:underline text-[10px] md:text-[12px]">
           <img src="/arroba.png" alt="correo electronico" className="h-5 w-5" />
@@ -54,7 +54,7 @@ export const Footer = () => {
       {/* MEDIOS DE PAGO */}
       <aside className="flex flex-col gap-2 w-[45%] min-w-[140px] max-w-[240px]  text-right md:text-right order-4">
         <p>CONSULTA NUESTROS MEDIOS DE PAGO</p>
-        <p>Horarios de atencion: Lunes a Viernes de 9 a 18hs</p>
+        <p>Horarios de atencion: Lunes a Viernes de 9 a 19hs</p>
       </aside>
     </footer>
   );

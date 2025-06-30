@@ -1,58 +1,60 @@
 "use client";
 import { useContext } from "react";
 import { ContextApp } from "../../context/context";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Loader from "../customLoader";
 import { Idestacadas } from "@/types";
 
 export const Carousel = () => {
   const { destacadas } = useContext(ContextApp);
-  const router = useRouter();
 
-  const handleDetail = (id: string) => {
-    router.push(`/detailItem/${id}`);
+  const handleDetail = (producto: Idestacadas) => {
+    const mensaje = `Hola! Quiero hacer una consulta sobre este producto: ${producto.nombre}`;
+    const urlEncoded = encodeURIComponent(mensaje);
+    const telefono = "1133703961"; // 
+    const wpUrl = `https://wa.me/${telefono}?text=${urlEncoded}`;
+    window.open(wpUrl, "_blank");
   };
 
-
-  // Duplicamos para efecto de loop
   const loopItems = destacadas.concat(destacadas);
 
   return (
-      
     <section
       className="w-full h-[12rem] overflow-hidden relative md:bg-gradient-to-t from-[#1a1a1acc] via-[#2d2d2d95] to-[#1a1a1a00] top-1 md:top-54 flex items-center justify-center md:shadow-lg"
       aria-label="Cinta deslizante con productos destacados"
     >
-
-    { !destacadas || destacadas.length === 0? <Loader></Loader>: (
-      <ul className="flex w-max animate-scrollBanner hover:[animation-play-state:paused]">
-        {loopItems.map((item: Idestacadas, i) => (
-          <li
-            key={i}
-            onClick={() => handleDetail(item.id)}
-            className="w-[250px] h-[150px] flex-shrink-0 relative mx-2 cursor-pointer"
-          >
-            <Image
-              src={item.imagen[2]}
-              width={500}
-              height={500}
-              alt={`Imagen del producto ${item.nombre} con ${item.oferta}% de descuento`}
-              className="object-cover h-full w-full rounded"
-            />
-            <div className="absolute top-0 left-0 overflow-hidden w-[76px] h-[76px]">
-              <div className="bg-red-600 text-white text-[10px] font-bold rotate-[-45deg] w-[100px] text-center absolute top-3 left-[-30px] z-50">
-                -{item.oferta}%
+      {!destacadas || destacadas.length === 0 ? (
+        <Loader />
+      ) : (
+        <ul className="flex w-max animate-scrollBanner hover:[animation-play-state:paused]">
+          {loopItems.map((item: Idestacadas, i) => (
+            <li
+              key={i}
+              onClick={() => handleDetail(item)}
+              className="w-[150px] h-[170px] flex-shrink-0 relative mx-2 cursor-pointer"
+            >
+              <Image
+                src={item.imagen}
+                width={500}
+                height={500}
+                alt={`Imagen del producto ${item.nombre} con ${item.oferta}% de descuento`}
+                className="object-cover h-full w-full rounded"
+              />
+              <div className="absolute top-0 left-0 overflow-hidden w-[76px] h-[76px]">
+                <div className="bg-red-600 text-white text-[10px] font-bold rotate-[-45deg] w-[100px] text-center absolute top-3 left-[-30px] z-50">
+                  -{item.oferta}%
+                </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>)}
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 };
 
-{/*
+{
+  /*
   PRIMER VERSION
   "use client";
 import { useState, useEffect, useContext } from "react";
@@ -162,4 +164,5 @@ export const Carousel = () => {
     </section>
   );
 };
-*/}
+*/
+}

@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { ICeramicos, Ipegamentos, Iporcelanatos } from "@/types";
 import { Porcelanato_Card } from "../Porcelanato_Card";
 import { Pegamento_Card } from "../Pegamentos_Card";
+import { createSlug } from "@/utils/slugs";
 
 type ProductoTipo = "ceramicos" | "porcelanatos" | "pegamentos";
 
@@ -26,8 +27,9 @@ export const ProductList = () => {
   const itemsPerPage = 48;
 
   const router = useRouter();
-  const handleDetail = (id: string) => {
-    router.push(`/detailItem/${id}`);
+  const handleDetail = (producto: ICeramicos | Iporcelanatos | Ipegamentos) => {
+    const slug = createSlug(producto.nombre, producto.id);
+  router.push(`/detalle/${slug}`);
   };
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -269,7 +271,7 @@ export const ProductList = () => {
                   <Product_Card
                     key={producto.id}
                     ceramico={producto as ICeramicos}
-                    onClick={() => handleDetail(producto.id)}
+                    onClick={() => handleDetail(producto)}
                   />
                 );
               }
@@ -279,7 +281,7 @@ export const ProductList = () => {
                   <Porcelanato_Card
                     key={producto.id}
                     porcelanato={producto as Iporcelanatos}
-                    onClick={() => handleDetail(producto.id)}
+                    onClick={() => handleDetail(producto)}
                   />
                 );
               }
@@ -288,7 +290,6 @@ export const ProductList = () => {
                 <Pegamento_Card
                   key={producto.id}
                   pegamento={producto as Ipegamentos}
-                  onClick={() => handleDetail(producto.id)}
                 />
               );
             })
