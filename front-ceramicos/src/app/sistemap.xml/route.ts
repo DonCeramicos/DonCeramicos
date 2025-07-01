@@ -5,7 +5,7 @@ import { getProducts } from '@/helpers';
 import { ICeramicos } from '@/types';
 
 export async function GET() {
-  const baseUrl = 'https://donceramicos.com'; // Cambiá esto por tu dominio cuando lo tengas
+  const baseUrl = 'https://www.donceramicos.com.ar'; 
   const ceramicos = await getProducts(); // Simula acceder a tu contexto (Firebase)
   const today = format(new Date(), 'yyyy-MM-dd');
 

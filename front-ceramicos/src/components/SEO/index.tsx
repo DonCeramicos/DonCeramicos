@@ -8,7 +8,7 @@ export const SEO = ({
   title = "Don Cerámicos - Calidad y diseño en cerámicos",
   description = "Descubrí nuestra amplia variedad de cerámicos para pisos y paredes, con calidad premium y diseños exclusivos. ¡Envíos a todo el país!",
   keywords = "cerámicos, pisos, paredes, calidad, diseño, Don Cerámicos, azulejos, revestimientos",
-  canonicalUrl = "https://donceramicos.com",
+  canonicalUrl = "https://www.donceramicos.com.ar",
   ogImage = "/favicon/favicon-96x96.png", // Reemplazalo por una imagen real
 }: SEOProps) => (
   <Head>
@@ -44,6 +44,6 @@ export const SEO = ({
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
     {/* Google site verification (si usás Search Console) */}
-    {/* <meta name="google-site-verification" content="TU_TOKEN_VERIFICACION" /> */}
+     <meta name="google-site-verification" content="OOctLFX8ZJAQEJB2NkwArIMxTs9vHpuEWoMkMK6qB8I" /> 
   </Head>
 );

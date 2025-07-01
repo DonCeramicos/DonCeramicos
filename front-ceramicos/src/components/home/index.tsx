@@ -1,7 +1,16 @@
 import { Carousel } from "../carousel";
+import { SEO } from "../SEO";
 
 export const HomeComponent = () => {
   return (
+    <>
+      <SEO
+        title={`Don Cerámicos - Calidad y diseño en cerámicos`}
+        description={`Descubrí nuestra amplia variedad de cerámicos para pisos y paredes, con calidad premium y diseños exclusivos. ¡Envíos a todo el país!`}
+        keywords={`cerámicos, pisos, paredes, calidad, diseño, Don Cerámicos, azulejos, revestimientos`}
+        canonicalUrl={`https://www.donceramicos.com.ar`}
+        ogImage={`/favicon/favicon-96x96.png`} 
+      />
     <section
       id="home"
       className="h-[92vh] md:h-[91vh] relative flex flex-col scroll-mt-24 bg-gradient-to-b from-[#000000d9] to-transparent"
@@ -37,5 +46,7 @@ export const HomeComponent = () => {
         <Carousel />
       </section>
     </section>
+
+    </>
   );
 };

@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
       title: `${product.nombre} | Don Cerámicos`,
       description: product.descripcion,
       images: [product.imagen[0] || "/favicon/favicon-96x96.png"],
-      url: `https://donceramicos.com/detalle/${params.slugId}`,
+      url: `https://www.donceramicos.com.ar/detalle/${params.slugId}`,
     },
     twitter: {
       card: "summary_large_image",

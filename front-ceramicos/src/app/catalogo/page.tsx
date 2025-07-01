@@ -11,7 +11,7 @@ export default function Catalogo() {
       <SEO
         title={`Don Cerámicos `}
         description={`Descubrí nuestra amplia variedad de cerámicos para pisos y paredes, con calidad premium y diseños exclusivos.`}
-        canonicalUrl={`https://donceramicos.com/catalogo`}
+        canonicalUrl={`https://www.donceramicos.com.ar/catalogo`}
       />
       <main className="w-full border-none">
         {/* Sección 1: Productos */}

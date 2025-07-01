@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import SendLoader from "../sendLoader";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Ierror, IForm, ITouched } from "@/types";
+import { SEO } from "../SEO";
 
 
 export const Contact = () => {
@@ -147,6 +148,12 @@ export const Contact = () => {
   };
 
   return (
+    <>
+      <SEO
+        title={`Contacto Don Cerámicos - Calidad y diseño en cerámicos`}
+        description={`Contacto Don Cerámicos - Calidad y diseño en cerámicos`}
+        keywords={`cerámicos, pisos, paredes, calidad, diseño, Don Cerámicos, azulejos, revestimientos` }
+      />
     <section
       id="contacto"
       className="flex flex-col bg-gradient-to-b from-[#000000] via-[#292929db] to-[#272727] pt-20 relative scroll-mt-[-6rem] md:scroll-mt-0"
@@ -378,6 +385,7 @@ export const Contact = () => {
         </div>
       </div>
     </section>
+     </>
   );
 };
 

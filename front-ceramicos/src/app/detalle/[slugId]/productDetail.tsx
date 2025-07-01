@@ -4,6 +4,7 @@ import { ContextApp } from "@/context/context";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ICeramicos, Iporcelanatos } from "@/types";
+import Loader from "@/components/customLoader";
 
 type Producto = ICeramicos  | Iporcelanatos;
 
@@ -39,9 +40,7 @@ useEffect(() => {
 
   if (!itemDetail) {
     return (
-      <p aria-label="cargando el detalle del producto" className="text-white">
-        Cargando detalle...
-      </p>
+      <Loader />
     );
   }
 
