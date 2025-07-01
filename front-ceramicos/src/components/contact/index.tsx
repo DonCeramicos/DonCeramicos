@@ -366,7 +366,7 @@ export const Contact = () => {
 
             <div className="text-sm color-font-2 text-center">
               <p>
-                <a href="tel:+5491123456789">📞 11-2345-6789</a>
+                <a href="tel:+5491133703961">📞 11-3370-3961</a>
               </p>
               <p>
                 <a href="mailto:donceramicos.info@gmail.com">

@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect, useContext } from "react";
 import { ContextApp } from "@/context/context";
 import { useRouter } from "next/navigation";
@@ -11,24 +10,24 @@ type Producto = ICeramicos  | Iporcelanatos;
 export default function ProductDetail({ id }: { id: string }) {
   const [selectedImage, setSelectedImage] = useState<string>("");
   const [itemDetail, setItemDetail] = useState<Producto | null>(null);
-
-  const { ceramicos, destacadas, porcelanatos } = useContext(ContextApp);
   const router = useRouter();
 
-  useEffect(() => {
-    let found: Producto | undefined;
+ const { ceramicos, ceramicosOffers, porcelanatos, porcelanatosOffers } = useContext(ContextApp);
 
-    if (ceramicos.length > 0) {
-      found = ceramicos.find((c) => c.id === id);
-    }
+useEffect(() => {
+  let found: Producto | undefined;
 
+  const allCeramicos = [...ceramicos, ...ceramicosOffers];
+  const allPorcelanatos = [...porcelanatos, ...porcelanatosOffers];
 
-    if (!found && porcelanatos.length > 0) {
-      found = porcelanatos.find((p) => p.id === id);
-    }
+  found = allCeramicos.find((c) => c.id === id);
+  if (!found) {
+    found = allPorcelanatos.find((p) => p.id === id);
+  }
 
-    setItemDetail(found ?? null);
-  }, [ceramicos, destacadas, porcelanatos, id]);
+  setItemDetail(found ?? null);
+}, [ceramicos, ceramicosOffers, porcelanatos, porcelanatosOffers, id]);
+
 
   const handleImageClick = (img: string) => {
     setSelectedImage(img);

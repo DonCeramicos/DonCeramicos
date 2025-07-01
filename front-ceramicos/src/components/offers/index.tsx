@@ -12,6 +12,7 @@ import {
 } from "@/types";
 import { createSlug } from "@/utils/slugs";
 
+type ProductoTipo = "ceramicos" | "porcelanatos" | "pegamentos";
 
 export const Offers = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ export const Offers = () => {
     porcelanatosOffers,
   } = useContext(ContextApp);
 
-  const [tipoSeleccionado, setTipoSeleccionado] = useState<string | null>(null);
+  const [tipoSeleccionado, setTipoSeleccionado] = useState<ProductoTipo | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 48;
 
@@ -43,10 +44,12 @@ export const Offers = () => {
 
 
 
+
   const handleDetail = (producto: ICeramicos | Iporcelanatos | Ipegamentos) => {
-  const slug = createSlug(producto.nombre, producto.id);
-  router.push(`/detalle/${slug}`);
-};
+    const slug = createSlug(producto.nombre, producto.id);
+    console.log(slug);
+    router.push(`/detalle/${slug}`);
+  };
 
   const [liveMessage, setLiveMessage] = useState("");
   useEffect(() => {
