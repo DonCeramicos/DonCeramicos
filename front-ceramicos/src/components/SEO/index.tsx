@@ -45,5 +45,6 @@ export const SEO = ({
 
     {/* Google site verification (si usás Search Console) */}
      <meta name="google-site-verification" content="OOctLFX8ZJAQEJB2NkwArIMxTs9vHpuEWoMkMK6qB8I" /> 
+     
   </Head>
 );
