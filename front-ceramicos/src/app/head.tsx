@@ -40,6 +40,8 @@ export default function Head() {
 
       {/* Google site verification */}
       <meta name="google-site-verification" content="OOctLFX8ZJAQEJB2NkwArIMxTs9vHpuEWoMkMK6qB8I" />
+      <meta name="google-site-verification" content="OOctLFX8ZJAQEJB2NkwArIMxTs9vHpuEWoMkMK6qB8I" />
+
     </>
   );
 }
