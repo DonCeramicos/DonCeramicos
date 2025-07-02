@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://donceramicos.com.ar/sitemap.xml
+Sitemap: https://www.donceramicos.com.ar/sitemap.xml

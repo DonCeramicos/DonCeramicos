@@ -1,12 +1,12 @@
 // app/sitemap.xml/route.ts
 import { NextResponse } from 'next/server';
 import  {format}  from 'date-fns';
-import { getProducts } from '@/helpers';
+import { getProductsDirect } from "@/helpers/getProductsDirect";
 import { ICeramicos } from '@/types';
 
 export async function GET() {
   const baseUrl = 'https://www.donceramicos.com.ar'; 
-  const ceramicos = await getProducts(); // Simula acceder a tu contexto (Firebase)
+  const ceramicos = await getProductsDirect(); // Simula acceder a tu contexto (Firebase)
   const today = format(new Date(), 'yyyy-MM-dd');
 
   const staticRoutes = [
@@ -18,22 +18,21 @@ export async function GET() {
     { loc: '/catalogo#catalogo', priority: 0.8 }
   ];
 
-  const productRoutes = ceramicos.map((item : ICeramicos) => ({
-    loc: `/detailItem/${item.id}`,
-    priority: 0.7,
-    changefreq: 'weekly',
-  }));
+const productRoutes = (ceramicos as ICeramicos[]).map((item) => ({
+  loc: `/detailItem/${item.id}`,
+  priority: 0.7,
+  changefreq: 'weekly',
+}));
 
   const urls = [...staticRoutes, ...productRoutes];
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+const xml = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${urls
       .map(
         (url) => `
       <url>
         <loc>${baseUrl}${url.loc}</loc>
-        <changefreq>${url.changefreq || 'monthly'}</changefreq>
+        ${'changefreq' in url ? `<changefreq>${url.changefreq}</changefreq>` : ''}
         <priority>${url.priority}</priority>
         <lastmod>${today}</lastmod>
       </url>`
