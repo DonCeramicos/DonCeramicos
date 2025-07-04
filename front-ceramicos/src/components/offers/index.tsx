@@ -1,15 +1,11 @@
 "use client";
 import { ContextApp } from "@/context/context";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useMemo } from "react";
 import { Product_Card } from "../Product_Card";
 import { Porcelanato_Card } from "../Porcelanato_Card";
 import { Pegamento_Card } from "../Pegamentos_Card";
 import { useRouter } from "next/navigation";
-import {
-  ICeramicos,
-  Iporcelanatos,
-  Ipegamentos,
-} from "@/types";
+import { ICeramicos, Iporcelanatos, Ipegamentos } from "@/types";
 import { createSlug } from "@/utils/slugs";
 
 type ProductoTipo = "ceramicos" | "porcelanatos" | "pegamentos";
@@ -24,30 +20,24 @@ export const Offers = () => {
 
   const [tipoSeleccionado, setTipoSeleccionado] = useState<ProductoTipo | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 48;
+  const itemsPerPage = 24;
 
-  const productosFiltrados =
-    tipoSeleccionado === "ceramicos"
-      ? ceramicosOffers
-      : tipoSeleccionado === "porcelanatos"
-      ? porcelanatosOffers
-      : tipoSeleccionado === "pegamentos"
-      ? pegamentosOffers
-      : [];
+  const productosFiltrados = useMemo(() => {
+    if (!tipoSeleccionado) return [];
+    if (tipoSeleccionado === "ceramicos") return ceramicosOffers;
+    if (tipoSeleccionado === "porcelanatos") return porcelanatosOffers;
+    return pegamentosOffers;
+  }, [tipoSeleccionado, ceramicosOffers, porcelanatosOffers, pegamentosOffers]);
 
   const totalPages = Math.ceil(productosFiltrados.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = productosFiltrados.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
 
-
-
+  const currentItems = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    return productosFiltrados.slice(startIndex, startIndex + itemsPerPage);
+  }, [productosFiltrados, currentPage, itemsPerPage]);
 
   const handleDetail = (producto: ICeramicos | Iporcelanatos | Ipegamentos) => {
     const slug = createSlug(producto.nombre, producto.id);
-    console.log(slug);
     router.push(`/detalle/${slug}`);
   };
 
@@ -62,15 +52,13 @@ export const Offers = () => {
       aria-label="Sección de productos en oferta"
       className="scroll-mt-20 md:scroll-mt-20 flex flex-col items-center justify-start min-h-[100vh] px-2 md:px-6 pt-6"
     >
-      {/* Título */}
       <div className="w-full max-w-7xl mb-4">
         <h1 className="text-xl sm:text-2xl font-phudu color-font-3 font-light text-center">
           Ofertas Mensuales
         </h1>
       </div>
 
-      {/* Botones de filtro */}
-      <div className="flex flex-wrap justify-center gap-2 mb-6 w-auto max-w-7xl z-40 font-phudu bg-custom-4 p-1 rounded ">
+      <div className="flex flex-wrap justify-center gap-2 mb-6 w-auto max-w-7xl z-90 font-phudu bg-custom-4 p-1 rounded ">
         <button
           onClick={() => {
             setTipoSeleccionado("ceramicos");
@@ -109,11 +97,10 @@ export const Offers = () => {
         </button>
       </div>
 
-      {/* Paginado */}
       {tipoSeleccionado && totalPages > 1 && (
         <nav
           aria-label="Paginación de productos en oferta"
-          className="flex overflow-x-auto no-scrollbar whitespace-nowrap items-center gap-[4px] px-2 py-1 mb-4 w-full max-w-7xl"
+          className="flex overflow-x-auto no-scrollbar whitespace-nowrap items-center gap-[4px] px-2 py-1 mb-4 w-full max-w-7xl z-50"
         >
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -161,12 +148,10 @@ export const Offers = () => {
         </nav>
       )}
 
-      {/* Lectores de pantalla */}
       <div aria-live="polite" className="sr-only">
         {liveMessage}
       </div>
 
-      {/* Lista de productos en oferta */}
       <section
         aria-label="Lista de productos con descuento"
         className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 overflow-y-auto mt-4 max-h-[63vh] md:h-[80vh] w-full max-w-7xl"
