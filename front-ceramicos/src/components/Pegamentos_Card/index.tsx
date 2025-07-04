@@ -25,13 +25,13 @@ export const Pegamento_Card = ({
       )}
 
       {/* Imagen */}
-      <div className="w-full aspect-[1/1] relative overflow-hidden rounded">
+<div className="w-full aspect-square relative rounded overflow-hidden bg-white flex items-center justify-center">
         <Image
           src={pegamento.imagen || "/placeholder.png"}
           alt={pegamento.nombre}
           fill
-          className="object-cover hover:scale-[1.03] transition-transform duration-300"
-          sizes="(max-width: 640px) 100vw, 170px"
+          className="object-contain hover:scale-[1.03] transition-transform duration-300 rounded"
+          sizes="(max-width: 630px) 80vw, 170px"
         />
       </div>
 

@@ -24,7 +24,7 @@ export const ProductList = () => {
   const [categoria, setCategoria] = useState<ICeramicos[]>([]); // solo para cerámicos
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 48;
+  const itemsPerPage = 24;
 
   const router = useRouter();
   const handleDetail = (producto: ICeramicos | Iporcelanatos | Ipegamentos) => {
@@ -57,14 +57,19 @@ export const ProductList = () => {
     setCategoria([]);
   };
 
-  const handleCategoria = (cat: string) => {
-    if (tipoSeleccionado !== "ceramicos") return;
+const handleCategoria = (cat: string) => {
+  if (tipoSeleccionado !== "ceramicos") return;
 
-    const filtrados = ceramicos.filter((c) => c.categoria === cat);
-    setCategoria(filtrados);
-    setSearchData([]);
-    setCurrentPage(1);
-  };
+  const filtrados = ceramicos.filter((c) => {
+    const categoriaNormalizada = c.categoria?.toLowerCase().trim();
+    return categoriaNormalizada === cat.toLowerCase().trim();
+  });
+
+  setCategoria(filtrados);
+  setSearchData([]);
+  setCurrentPage(1);
+};
+
 
   // Lógica para cerámicos (con paginado)
   const getBaseList = () => {
@@ -96,13 +101,13 @@ export const ProductList = () => {
       <div className="flex justify-center flex-wrap gap-2 w-full font-phudu">
         <button
           onClick={() => handleCategoria("piso")}
-          className="border rounded px-2 py-1 text-sm"
+          className="border rounded px-2 py-1 text-sm hover:cursor-pointer"
         >
           PISO
         </button>
         <button
           onClick={() => handleCategoria("pared")}
-          className="border rounded px-2 py-1 text-sm"
+          className="border rounded px-2 py-1 text-sm hover:cursor-pointer"
         >
           PARED
         </button>
@@ -112,7 +117,7 @@ export const ProductList = () => {
             setSearchData([]);
             setCurrentPage(1);
           }}
-          className="border rounded px-2 py-1 text-sm"
+          className="border rounded px-2 py-1 text-sm hover:cursor-pointer"
         >
           Catálogo
         </button>
@@ -139,16 +144,17 @@ export const ProductList = () => {
             Nuestros Productos
           </h1>
 
-          {searchData.length === 0 &&
-            categoria.length === 0 &&
-            totalPages > 1 && (
+          {tipoSeleccionado !== null &&
+  searchData.length === 0 &&
+  categoria.length === 0 &&
+  totalPages > 1 && (
               <div className="flex overflow-x-auto gap-1">
                 <button
                   onClick={() =>
                     setCurrentPage((prev) => Math.max(prev - 1, 1))
                   }
                   disabled={currentPage === 1}
-                  className="w-6 h-6 text-sm bg-btn-paginado"
+                  className="w-6 h-6 text-sm bg-btn-paginado hover:cursor-pointer"
                 >
                   ←
                 </button>
@@ -157,7 +163,7 @@ export const ProductList = () => {
                     <button
                       key={page}
                       onClick={() => setCurrentPage(page)}
-                      className={`w-6 h-6 text-sm ${
+                      className={`w-6 h-6 text-sm hover:cursor-pointer ${
                         page === currentPage
                           ? "bg-btn-paginado-selected"
                           : "bg-btn-paginado"
@@ -172,7 +178,7 @@ export const ProductList = () => {
                     setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                   }
                   disabled={currentPage === totalPages}
-                  className="w-6 h-6 text-sm bg-btn-paginado"
+                  className="w-6 h-6 text-sm bg-btn-paginado hover:cursor-pointer"
                 >
                   →
                 </button>
