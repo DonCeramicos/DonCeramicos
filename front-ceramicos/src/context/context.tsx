@@ -50,19 +50,16 @@ export const Context = ({ children }: ContextProviderProps) => {
     const fetchDestacados = async () => {
       const data = await getDestacados();
       setDestacadas(data);
-      console.log(data);
     };
     const fetchPegamentos = async () => {
       const data = await getPegamentos();
       setPegamentos(data.filter((pegamento: Ipegamentos) => pegamento.oferta === false));
       setPegamentosOffers(data.filter((pegamento: Ipegamentos) => pegamento.oferta));
-      console.log(data);
     };
     const fetchPorcelanatos = async () => {
       const data = await getPorcelanatos();
       setPorcelanatos(data.filter((porcelanato: Iporcelanatos) => porcelanato.oferta === false));
       setPorcelanatosOffers(data.filter((porcelanato: Iporcelanatos) => porcelanato.oferta));
-      console.log(data);
     }
     fetchCeramicos();
     fetchDestacados();
